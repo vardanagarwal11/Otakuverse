@@ -3,12 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { SignInButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { publicKey } = useWallet();
 
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-b from-black to-transparent py-4 px-4 md:px-8">
@@ -31,14 +29,11 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/auth">
+          <SignInButton mode="modal">
             <Button variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
-              Login with Crunchyroll
+              Login
             </Button>
-          </Link>
-          <div className="ml-2">
-            <WalletMultiButton className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center gap-2" />
-          </div>
+          </SignInButton>
         </div>
 
         {/* Mobile menu button */}
@@ -83,14 +78,11 @@ const Navbar = () => {
             </Link>
             
             <div className="pt-4 flex flex-col space-y-4">
-              <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+              <SignInButton mode="modal">
                 <Button variant="outline" className="w-full border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
-                  Login with Crunchyroll
+                  Login
                 </Button>
-              </Link>
-              <div className="w-full flex justify-center">
-                <WalletMultiButton className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center justify-center gap-2" />
-              </div>
+              </SignInButton>
             </div>
           </div>
         </div>

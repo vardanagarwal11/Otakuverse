@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PlayCircle, Palette, Users } from "lucide-react";
 import HeroBackgroundSlider from "./HeroBackgroundSlider";
+import WaitlistForm from "./WaitlistForm";
 
 const HeroSection = () => {
   const [offset, setOffset] = useState(0);
@@ -51,28 +52,8 @@ const HeroSection = () => {
             Join dedicated anime communities, collect exclusive NFTs, and earn rewards while watching your favorite series on the first decentralized anime platform.
           </p>
           
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
-            <Link to="/auth?register=true">
-              <Button size="lg" className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber min-w-[180px] animate-neon-pulse">
-                Connect Wallet
-              </Button>
-            </Link>
-            <Link to="/anime">
-              <Button size="lg" variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber min-w-[180px]">
-                <PlayCircle className="mr-2 h-5 w-5" /> Watch Anime
-              </Button>
-            </Link>
-            <Link to="/marketplace">
-              <Button size="lg" variant="outline" className="border-otaku-pink text-otaku-pink hover:bg-otaku-pink/20 font-cyber min-w-[180px]">
-                <Palette className="mr-2 h-5 w-5" /> Browse NFTs
-              </Button>
-            </Link>
-            <Link to="/communities">
-              <Button size="lg" variant="outline" className="border-otaku-purple text-otaku-purple hover:bg-otaku-purple/20 font-cyber min-w-[180px]">
-                <Users className="mr-2 h-5 w-5" /> Join Communities
-              </Button>
-            </Link>
-          </div>
+          {/* Waitlist Form */}
+          <WaitlistForm />
         </div>
       </div>
     </div>
