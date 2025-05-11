@@ -7,16 +7,36 @@ import { toast } from "@/hooks/use-toast";
 const WaitlistSection = () => {
   const [email, setEmail] = useState("");
 
-  const handleJoinWaitlist = () => {
-    // In a real application, you would send this to your backend
-    // For now, we'll just show a success notification
-    toast({
-      title: "Success! You're on the list",
-      description: "You'll be the first to know when we launch new features.",
-      variant: "default",
-    });
-    
-    setEmail("");
+  const handleJoinWaitlist = async () => {
+    if (!email) return toast({ title: "Email required", variant: "destructive" });
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        toast({
+          title: "Success! You're on the list",
+          description: "You'll be the first to know when we launch new features.",
+          variant: "default",
+        });
+        setEmail("");
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Something went wrong.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      toast({
+        title: "Network error",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

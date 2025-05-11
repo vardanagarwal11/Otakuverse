@@ -13,7 +13,7 @@ const WaitlistForm = () => {
     setSuccess(false);
     setLoading(true);
     try {
-      const res = await fetch("/api/waitlist", {
+      const res = await fetch("http://localhost:5000/api/waitlist", { // Updated URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -47,6 +47,9 @@ const WaitlistForm = () => {
       </Button>
       {success && <span className="text-green-400 font-cyber ml-4">Joined!</span>}
       {error && <span className="text-red-400 font-cyber ml-4">{error}</span>}
+      <div className="mt-4 text-center text-white">
+        Be the first to access our exclusive creator tools, community features, and NFT drops. Sign up now and get priority access when we launch!
+      </div>
     </form>
   );
 };

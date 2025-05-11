@@ -1,6 +1,10 @@
 import express from 'express';
 import Waitlist from '../models/Waitlist.js';
+import cors from 'cors';
+
 const router = express.Router();
+
+router.use(cors()); // Allow cross-origin requests
 
 router.post('/', async (req, res) => {
   const { email } = req.body;
@@ -13,4 +17,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 export default router;

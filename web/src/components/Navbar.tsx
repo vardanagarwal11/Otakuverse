@@ -1,14 +1,14 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton, useAuth } from "@clerk/clerk-react";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSignedIn, signOut } = useAuth();
 
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-b from-black to-transparent py-4 px-4 md:px-8">
@@ -26,27 +26,33 @@ const Navbar = () => {
             <Link to="/" className="font-cyber text-white hover:text-otaku-purple transition-colors">Home</Link>
             <Link to="/about" className="font-cyber text-white hover:text-otaku-purple transition-colors">About</Link>
             <Link to="/services" className="font-cyber text-white hover:text-otaku-purple transition-colors">Services</Link>
+            <Link to="/anime" className="font-cyber text-white hover:text-otaku-purple transition-colors">Anime</Link>
             <Link to="/marketplace" className="font-cyber text-white hover:text-otaku-purple transition-colors">Marketplace</Link>
+            <Link to="/communities" className="font-cyber text-white hover:text-otaku-purple transition-colors">Communities</Link>
           </div>
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
-                Login
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="flex flex-col items-center gap-6 max-w-xs">
-              <DialogHeader>
-                <DialogTitle className="text-center">Login</DialogTitle>
-              </DialogHeader>
-              <SignInButton mode="modal">
-                <Button className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber">Login with Google</Button>
-              </SignInButton>
-              <WalletMultiButton className="w-full bg-otaku-blue hover:bg-otaku-purple-vivid text-white font-cyber" />
-            </DialogContent>
-          </Dialog>
+          {isSignedIn ? (
+            <Button onClick={signOut} className="font-cyber">Logout</Button>
+          ) : (
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
+                  Login
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="flex flex-col items-center gap-6 max-w-xs">
+                <DialogHeader>
+                  <DialogTitle className="text-center">Login</DialogTitle>
+                </DialogHeader>
+                <SignInButton mode="modal">
+                  <Button className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber">Login with Google</Button>
+                </SignInButton>
+                <WalletMultiButton className="w-full bg-otaku-blue hover:bg-otaku-purple-vivid text-white font-cyber" />
+              </DialogContent>
+            </Dialog>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -91,11 +97,15 @@ const Navbar = () => {
             </Link>
             
             <div className="pt-4 flex flex-col space-y-4">
-              <SignInButton mode="modal">
-                <Button variant="outline" className="w-full border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
-                  Login
-                </Button>
-              </SignInButton>
+              {isSignedIn ? (
+                <Button onClick={signOut} className="font-cyber">Logout</Button>
+              ) : (
+                <SignInButton mode="modal">
+                  <Button variant="outline" className="w-full border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
+                    Login
+                  </Button>
+                </SignInButton>
+              )}
             </div>
           </div>
         </div>
