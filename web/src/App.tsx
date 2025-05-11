@@ -33,10 +33,6 @@ const App = () => {
             <Route path="/watch" element={<WatchPage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/communities/:id" element={<CommunityPage />} />
-            <Route path="/about" element={<NotFound />} />
-            <Route path="/services" element={<NotFound />} />
-            <Route path="/marketplace" element={<NotFound />} />
-            <Route path="/creators" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

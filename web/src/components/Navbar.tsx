@@ -22,14 +22,11 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="font-cyber text-white hover:text-otaku-purple transition-colors">Home</Link>
-            <Link to="/about" className="font-cyber text-white hover:text-otaku-purple transition-colors">About</Link>
-            <Link to="/services" className="font-cyber text-white hover:text-otaku-purple transition-colors">Services</Link>
-            <Link to="/anime" className="font-cyber text-white hover:text-otaku-purple transition-colors">Anime</Link>
-            <Link to="/marketplace" className="font-cyber text-white hover:text-otaku-purple transition-colors">Marketplace</Link>
-            <Link to="/communities" className="font-cyber text-white hover:text-otaku-purple transition-colors">Communities</Link>
-          </div>
+          <Link to="/" className="font-cyber text-white hover:text-otaku-purple transition-colors">Home</Link>
+          <Link to="/anime" className="font-cyber text-white hover:text-otaku-purple transition-colors">Anime</Link>
+          <Link to="/marketplace" className="font-cyber text-white hover:text-otaku-purple transition-colors">Marketplace</Link>
+          <Link to="/communities" className="font-cyber text-white hover:text-otaku-purple transition-colors">Communities</Link>
+          <Link to="/dashboard" className="font-cyber text-white hover:text-otaku-purple transition-colors">Dashboard</Link>
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
@@ -75,18 +72,11 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
-              to="/about" 
+              to="/anime" 
               className="font-cyber text-xl py-2 px-4 rounded-md hover:bg-otaku-purple/20"
               onClick={() => setIsMenuOpen(false)}
             >
-              About
-            </Link>
-            <Link 
-              to="/services" 
-              className="font-cyber text-xl py-2 px-4 rounded-md hover:bg-otaku-purple/20"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
+              Anime
             </Link>
             <Link 
               to="/marketplace" 
@@ -94,6 +84,20 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Marketplace
+            </Link>
+            <Link 
+              to="/communities" 
+              className="font-cyber text-xl py-2 px-4 rounded-md hover:bg-otaku-purple/20"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Communities
+            </Link>
+            <Link 
+              to="/dashboard" 
+              className="font-cyber text-xl py-2 px-4 rounded-md hover:bg-otaku-purple/20"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Dashboard
             </Link>
             
             <div className="pt-4 flex flex-col space-y-4">
