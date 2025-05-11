@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/clerk-react";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +31,22 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
-          <SignInButton mode="modal">
-            <Button variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
-              Login
-            </Button>
-          </SignInButton>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="border-otaku-blue text-otaku-blue hover:bg-otaku-blue/20 font-cyber">
+                Login
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="flex flex-col items-center gap-6 max-w-xs">
+              <DialogHeader>
+                <DialogTitle className="text-center">Login</DialogTitle>
+              </DialogHeader>
+              <SignInButton mode="modal">
+                <Button className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber">Login with Google</Button>
+              </SignInButton>
+              <WalletMultiButton className="w-full bg-otaku-blue hover:bg-otaku-purple-vivid text-white font-cyber" />
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Mobile menu button */}
