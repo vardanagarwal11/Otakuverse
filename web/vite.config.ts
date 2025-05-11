@@ -27,7 +27,6 @@ export default defineConfig(({ mode }) => ({
     esbuildOptions: {
       define: { global: "globalThis" },
       plugins: [
-        NodeGlobalsPolyfillPlugin({ buffer: true }),
         NodeModulesPolyfillPlugin(),
       ],
     },

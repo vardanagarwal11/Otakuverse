@@ -11,38 +11,14 @@ export interface WalletInfo {
   isConnected: boolean;
 }
 
-// Check if Phantom wallet is available
-export const isPhantomAvailable = (): boolean => {
-  return window && 'solana' in window && 'phantom' in window.solana;
-};
+
 
 // Check if Backpack wallet is available
 export const isBackpackAvailable = (): boolean => {
   return window && 'backpack' in window;
 };
 
-// Connect to Phantom wallet
-export const connectPhantom = async (): Promise<WalletInfo | null> => {
-  try {
-    if (!isPhantomAvailable()) {
-      window.open('https://phantom.app/', '_blank');
-      return null;
-    }
 
-    const provider = window.solana;
-    const response = await provider.connect();
-    const publicKey = response.publicKey.toString();
-
-    return {
-      name: 'Phantom',
-      publicKey: publicKey,
-      isConnected: true
-    };
-  } catch (error) {
-    console.error('Error connecting to Phantom wallet:', error);
-    return null;
-  }
-};
 
 // Connect to Backpack wallet
 export const connectBackpack = async (): Promise<WalletInfo | null> => {

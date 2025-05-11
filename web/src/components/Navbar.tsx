@@ -1,42 +1,14 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Wallet } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
-import { connectPhantom, isPhantomAvailable } from "../utils/walletUtils";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleConnectWallet = async () => {
-    if (!isPhantomAvailable()) {
-      toast({
-        title: "Wallet not detected",
-        description: "Please install a Solana wallet like Phantom or Backpack",
-        variant: "destructive",
-      });
-      navigate("/auth?register=true");
-      return;
-    }
-    
-    try {
-      const result = await connectPhantom();
-      if (result) {
-        toast({
-          title: "Wallet connected!",
-          description: `Connected to ${result.name} wallet`,
-        });
-        // In a real app, you would update the UI to show the connected wallet
-      } else {
-        navigate("/auth?register=true");
-      }
-    } catch (error) {
-      console.error("Failed to connect wallet:", error);
-      navigate("/auth?register=true");
-    }
-  };
+  const { publicKey } = useWallet();
 
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-b from-black to-transparent py-4 px-4 md:px-8">
@@ -64,13 +36,9 @@ const Navbar = () => {
               Login with Crunchyroll
             </Button>
           </Link>
-          <Button 
-            onClick={handleConnectWallet}
-            className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center gap-2"
-          >
-            <Wallet size={18} />
-            Connect Wallet
-          </Button>
+          <div className="ml-2">
+            <WalletMultiButton className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center gap-2" />
+          </div>
         </div>
 
         {/* Mobile menu button */}
@@ -120,16 +88,9 @@ const Navbar = () => {
                   Login with Crunchyroll
                 </Button>
               </Link>
-              <Button
-                onClick={() => {
-                  handleConnectWallet();
-                  setIsMenuOpen(false);
-                }}
-                className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center justify-center gap-2"
-              >
-                <Wallet size={18} />
-                Connect Wallet
-              </Button>
+              <div className="w-full flex justify-center">
+                <WalletMultiButton className="w-full bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber flex items-center justify-center gap-2" />
+              </div>
             </div>
           </div>
         </div>

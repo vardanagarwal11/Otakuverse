@@ -7,13 +7,12 @@ import { Label } from "@/components/ui/label";
 import Navbar from "@/components/Navbar";
 import { toast } from "@/hooks/use-toast";
 import { 
-  connectPhantom, 
   connectBackpack, 
-  isPhantomAvailable, 
   isBackpackAvailable,
   WalletInfo
 } from "../utils/walletUtils";
 import { Wallet } from "lucide-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
@@ -33,40 +32,6 @@ const Auth = () => {
     checkWalletConnection();
   }, []);
   
-  // Handle Phantom wallet connection
-  const handlePhantomConnect = async () => {
-    setIsConnecting(true);
-    
-    try {
-      const walletData = await connectPhantom();
-      
-      if (walletData) {
-        setWalletInfo(walletData);
-        toast({
-          title: "Wallet connected!",
-          description: `Connected to Phantom (${walletData.publicKey.substring(0, 6)}...${walletData.publicKey.substring(walletData.publicKey.length - 4)})`,
-        });
-        
-        // In a real app, you might want to redirect or update the UI
-        setTimeout(() => navigate('/dashboard'), 1500);
-      } else {
-        toast({
-          title: "Phantom not installed",
-          description: "Please install the Phantom wallet extension",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Connection failed",
-        description: "Failed to connect to Phantom wallet",
-        variant: "destructive",
-      });
-    } finally {
-      setIsConnecting(false);
-    }
-  };
   
   // Handle Backpack wallet connection
   const handleBackpackConnect = async () => {
@@ -174,26 +139,9 @@ const Auth = () => {
                     </Button>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button 
-                      variant="outline"
-                      className="border-purple-500/50 hover:border-purple-500 hover:bg-purple-500/20"
-                      disabled={isConnecting || !isPhantomAvailable()}
-                      onClick={handlePhantomConnect}
-                    >
-                      <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" className="w-5 h-5 mr-2" alt="Solana" />
-                      Phantom
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      className="border-white/50 hover:border-white hover:bg-white/10"
-                      disabled={isConnecting || !isBackpackAvailable()}
-                      onClick={handleBackpackConnect}
-                    >
-                      <Wallet className="w-5 h-5 mr-2" />
-                      Backpack
-                    </Button>
-                  </div>
+                  <div className="flex justify-center my-2">
+  <WalletMultiButton className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber w-full" />
+</div>
                 </div>
               </TabsContent>
               
@@ -251,26 +199,9 @@ const Auth = () => {
                     </Button>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button 
-                      variant="outline"
-                      className="border-purple-500/50 hover:border-purple-500 hover:bg-purple-500/20"
-                      disabled={isConnecting || !isPhantomAvailable()}
-                      onClick={handlePhantomConnect}
-                    >
-                      <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" className="w-5 h-5 mr-2" alt="Solana" />
-                      Phantom
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      className="border-white/50 hover:border-white hover:bg-white/10"
-                      disabled={isConnecting || !isBackpackAvailable()}
-                      onClick={handleBackpackConnect}
-                    >
-                      <Wallet className="w-5 h-5 mr-2" />
-                      Backpack
-                    </Button>
-                  </div>
+                  <div className="flex justify-center my-2">
+  <WalletMultiButton className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber w-full" />
+</div>
                 </div>
               </TabsContent>
             </Tabs>
