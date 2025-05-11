@@ -1,0 +1,140 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 84% 75%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 92% 49%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 47% 20%;
+    --muted-foreground: 215 20.2% 75.1%;
+
+    --accent: 263 84% 75%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 263 84% 75% / 0.3;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 263 84% 75%;
+    
+    --radius: 1rem;
+
+    --sidebar-background: 223 47% 8%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 263 84% 75%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 263 84% 75% / 0.3;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-anime;
+  }
+}
+
+/* Custom utilities */
+@layer components {
+  .neon-border {
+    @apply border border-otaku-purple/60 shadow-[0_0_5px_#9b87f5,0_0_10px_#9b87f5];
+  }
+  
+  .neon-text {
+    @apply text-otaku-purple drop-shadow-[0_0_3px_#9b87f5];
+  }
+  
+  .neon-text-blue {
+    @apply text-otaku-blue drop-shadow-[0_0_3px_#33C3F0];
+  }
+  
+  .neon-text-pink {
+    @apply text-otaku-pink drop-shadow-[0_0_3px_#D946EF];
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_#9b87f5];
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(155, 135, 245, 0.3) 0%, rgba(30, 174, 219, 0.3) 50%, rgba(217, 70, 239, 0.3) 100%);
+  }
+
+  .anime-card {
+    @apply bg-card rounded-2xl border border-otaku-purple/30 overflow-hidden transition-all duration-300 hover:border-otaku-purple hover:shadow-[0_0_10px_#9b87f5];
+  }
+  
+  .btn-neon {
+    @apply bg-otaku-purple/90 text-white rounded-full px-6 py-3 font-cyber font-medium transition-all duration-300 hover:bg-otaku-purple hover:shadow-[0_0_10px_#9b87f5,0_0_20px_#9b87f5];
+  }
+  
+  .btn-outline-neon {
+    @apply bg-transparent border border-otaku-purple/80 text-otaku-purple rounded-full px-6 py-3 font-cyber font-medium transition-all duration-300 hover:border-otaku-purple hover:shadow-[0_0_10px_#9b87f5,0_0_20px_#9b87f5] hover:text-white;
+  }
+  
+  /* 3D flip card utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 135, 245, 0.5) rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(155, 135, 245, 0.5);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(155, 135, 245, 0.8);
+  }
+}
