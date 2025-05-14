@@ -17,29 +17,38 @@ interface NFT {
 const NFTS: NFT[] = [
   {
     id: 1,
-    name: "Demon Slayer: Tanjiro's Sword",
-    image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500",
+    name: "Saitama Genesis",
+    image: "https://preview.redd.it/9esa8cif2ja81.png?width=1080&crop=smart&auto=webp&s=8ec49edea780fcd7b1c12bc6dd26886e7d7b17c4",
     type: "paid",
     rarity: "rare",
-    anime: "Demon Slayer",
-    price: 230
+    anime: "One Punch Man",
+    price: 2.5
   },
   {
     id: 2,
-    name: "Attack on Titan: Scout Regiment Badge",
-    image: "https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=500",
+    name: "All Might Portrait",
+    image: "https://i.pinimg.com/236x/e9/b2/45/e9b2453a07b5948aa5d97283d240b42b.jpg",
+    type: "paid",
+    rarity: "rare",
+    anime: "My Hero Academia",
+    price: 1.52
+  },
+  {
+    id: 3,
+    name: "Scout Regiment Badge",
+    image: "https://media.sketchfab.com/models/8812126a43144d85abaae7d88e4d868c/thumbnails/73f4c01a9cfa489f94203b14dfe4520f/cee19a4936a245b29209ed09569afaab.jpeg",
     type: "earned",
     rarity: "legendary",
     anime: "Attack on Titan"
   },
   {
-    id: 3,
-    name: "My Hero Academia: All Might Portrait",
-    image: "https://images.unsplash.com/photo-1560707303-4e980ce876ad?q=80&w=500",
+    id: 4,
+    name: "Tanjiro's Sword",
+    image: "https://www.coolkatana.com/cdn/shop/articles/power_of_coolKatana_s_tanjiro_nichirin_sword_9103e7bb-20f1-4f7d-bec5-d43f9e727840.jpg?v=1740042664",
     type: "paid",
-    rarity: "uncommon",
-    anime: "My Hero Academia",
-    price: 150
+    rarity: "rare",
+    anime: "Demon Slayer",
+    price: 1.8
   }
 ];
 
@@ -134,7 +143,7 @@ const NFTShowcase = () => {
                     
                     <div className="flex justify-between items-center">
                       {nft.type === 'paid' ? (
-                        <div className="font-cyber text-otaku-blue text-lg">{nft.price} OTK</div>
+                        <div className="font-cyber text-otaku-blue text-lg">{nft.price} SOL</div>
                       ) : (
                         <div className="text-otaku-pink text-sm">Community Reward</div>
                       )}
