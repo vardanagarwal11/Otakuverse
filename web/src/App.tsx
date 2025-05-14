@@ -10,8 +10,11 @@ import AnimeLibrary from "./pages/AnimeLibrary";
 import WatchPage from "./pages/WatchPage";
 import Communities from "./pages/Communities";
 import NotFound from "./pages/NotFound";
+import Marketplace from "./pages/Marketplace";
+import PaymentPage from "./pages/PaymentPage";
 import CommunitiesShowcase from "@/components/CommunitiesShowcase";
 import CommunityPage from "@/pages/CommunityPage";
+import CommunityDiscord from "./pages/CommunityDiscord";
 import { createElement } from "react";
 
 // Create a client
@@ -30,9 +33,12 @@ const App = () => {
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/anime" element={<AnimeLibrary />} />
-            <Route path="/watch" element={<WatchPage />} />
+            <Route path="/watch/:animeId" element={<WatchPage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/communities/:id" element={<CommunityPage />} />
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/community-discord/:communityId" element={<CommunityDiscord />} />
+<Route path="/payment" element={<PaymentPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
