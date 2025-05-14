@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import ComingSoonModal from '@/components/ComingSoonModal';
 import { Link } from 'react-router-dom';
 import { 
   PlayCircle, Rocket, PenTool, ShoppingBag, 
@@ -8,6 +9,7 @@ import {
 import Navbar from '@/components/Navbar';
 
 const Dashboard = () => {
+  const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const userData = {
     name: "Anime Fan",
     watchTime: "124h 35m",
@@ -23,17 +25,12 @@ const Dashboard = () => {
       color: "bg-gradient-to-br from-otaku-blue to-otaku-blue-sky",
       link: "/anime" 
     },
-    { 
-      title: "Support Projects", 
-      icon: <Rocket className="w-8 h-8" />, 
-      color: "bg-gradient-to-br from-otaku-purple to-otaku-purple-vivid",
-      link: "/projects" 
-    },
+
     { 
       title: "Creator Studio", 
       icon: <PenTool className="w-8 h-8" />, 
       color: "bg-gradient-to-br from-otaku-pink to-purple-500",
-      link: "/creator" 
+      onClick: () => setComingSoonOpen(true)
     },
     { 
       title: "Marketplace", 
@@ -52,6 +49,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-otaku-dark text-white">
       <Navbar />
+      <ComingSoonModal open={comingSoonOpen} onClose={() => setComingSoonOpen(false)} />
       
       <div className="container mx-auto px-4 py-20">
         {/* User Profile Summary */}
@@ -123,22 +121,48 @@ const Dashboard = () => {
         </div>
         
         {/* Navigation Tiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {menuItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.link}
-              className="group block relative overflow-hidden rounded-xl border border-white/10 bg-card transition-all duration-300 hover:-translate-y-2 card-hover"
-            >
-              <div className={`absolute top-0 left-0 right-0 h-1 ${item.color}`}></div>
-              <div className="p-6 flex flex-col items-center text-center">
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${item.color}`}>
+        <div className="grid gap-6 mb-0" style={{
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          display: 'grid'
+        }}>
+
+          {menuItems.map((item, idx) => {
+            const vibrantRing = [
+              'from-otaku-blue to-otaku-blue-sky',
+              'from-otaku-pink to-purple-500',
+              'from-otaku-orange to-yellow-500',
+              'from-green-400 to-green-600'
+            ][idx % 4];
+            const content = (
+              <>
+                <div className={`mb-3 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br ${vibrantRing} shadow-lg`}>
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold font-cyber">{item.title}</h3>
-              </div>
-            </Link>
-          ))}
+                <span className="font-bold text-lg mb-1 group-hover:text-otaku-pink transition-colors text-center w-full block">
+                  {item.title}
+                </span>
+              </>
+            );
+            return item.onClick ? (
+              <button
+                key={item.title}
+                onClick={item.onClick}
+                className={`rounded-2xl p-6 flex flex-col items-center shadow-xl group hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer bg-otaku-dark/80 border border-otaku-blue/10`}
+                style={{ minHeight: 170 }}
+              >
+                {content}
+              </button>
+            ) : (
+              <Link
+                key={item.title}
+                to={item.link}
+                className={`rounded-2xl p-6 flex flex-col items-center shadow-xl group hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer bg-otaku-dark/80 border border-otaku-blue/10`}
+                style={{ minHeight: 170 }}
+              >
+                {content}
+              </Link>
+            );
+          })}
         </div>
         
         {/* Continue Watching Section */}
@@ -178,7 +202,6 @@ const Dashboard = () => {
   );
 };
 
-// Create a Progress component since it's being used in the Dashboard
 const Progress = ({ value, className = "" }: { value: number, className?: string }) => {
   return (
     <div className={`w-full bg-gray-700 ${className}`}>
