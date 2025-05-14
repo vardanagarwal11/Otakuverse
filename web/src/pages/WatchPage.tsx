@@ -1,59 +1,137 @@
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { 
-  PlayCircle, Pause, Volume2, VolumeX, Maximize, 
-  Settings, ChevronLeft, ChevronRight, ChevronDown, 
+  ChevronLeft,
   Heart, Share2, Plus
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
-const WatchPage = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [currentEpisode, setCurrentEpisode] = useState(1);
-  const [showControls, setShowControls] = useState(true);
-  const [earnedTokens, setEarnedTokens] = useState(12);
-  const navigate = useNavigate();
-  
-  const episodes = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    title: `Episode ${i + 1}`,
-    duration: '24:30',
-    thumbnail: `https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=200&h=100&fit=crop&auto=format&random=${i}`
-  }));
+interface Episode {
+  id: number;
+  title: string;
+  videoId: string;
+  duration: string;
+}
 
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-    // Simulate earning tokens while watching
-    if (!isPlaying) {
-      const interval = setInterval(() => {
-        setEarnedTokens(prev => prev + 1);
-      }, 10000); // Earn 1 token every 10 seconds
-      return () => clearInterval(interval);
+const WatchPage = (): JSX.Element => {
+  const navigate = useNavigate();
+  const { animeId } = useParams<{ animeId: string }>();
+  const [currentEpisode, setCurrentEpisode] = useState<number>(0);
+  const [earnedTokens, setEarnedTokens] = useState<number>(0);
+
+  // One Punch Man episodes from YouTube playlist
+  const episodes: Episode[] = [
+    {
+      id: 1,
+      title: 'One Punch Man | Episode 1 | The Strongest Man',
+      videoId: 'BjzQITTh188',
+      duration: '23:39'
+    },
+    {
+      id: 2,
+      title: 'One Punch Man | Episode 2 | The Lone Cyborg',
+      videoId: 'K-JJm8ykSco',
+      duration: '23:39'
+    },
+    {
+      id: 3,
+      title: 'One Punch Man | Episode 3 | The Obsessive Scientist',
+      videoId: 'a2-vuLKoEak',
+      duration: '23:39'
+    },
+    {
+      id: 4,
+      title: 'One Punch Man | Episode 4 | The Modern Ninja',
+      videoId: '4Oh0T6o5-hs',
+      duration: '23:39'
+    },
+    {
+      id: 5,
+      title: 'One Punch Man | Episode 5 | The Ultimate Master',
+      videoId: 'EuOdDzt4H38',
+      duration: '23:39'
+    },
+    {
+      id: 6,
+      title: 'One Punch Man | Episode 6 | The Terrifying City',
+      videoId: 'dBPNIp0AcFI',
+      duration: '23:39'
+    },
+    {
+      id: 7,
+      title: 'One Punch Man | Episode 7 | The Ultimate Disciple',
+      videoId: 'g2miy-jdQKA',
+      duration: '23:39'
+    },
+    {
+      id: 8,
+      title: 'One Punch Man | Episode 8 | The Deep Sea King',
+      videoId: 'VnawF_we774',
+      duration: '23:39'
+    },
+    {
+      id: 9,
+      title: 'One Punch Man | Episode 9 | Unyielding Justice',
+      videoId: 'J-I0QKFexjE',
+      duration: '23:39'
+    },
+    {
+      id: 10,
+      title: 'One Punch Man | Episode 10 | Unparalleled Peril',
+      videoId: 'jsIvgxBO4mk',
+      duration: '23:39'
+    },
+    {
+      id: 11,
+      title: 'One Punch Man | Episode 11 | The Dominator of the Universe',
+      videoId: 'RWQCORZZLLw',
+      duration: '23:39'
+    },
+    {
+      id: 12,
+      title: 'One Punch Man | Episode 12 | The Strongest Hero',
+      videoId: '_J71sZlvcsI',
+      duration: '23:39'
     }
-  };
+  ];
+
+  useEffect(() => {
+    // Only load One Punch Man episodes for anime ID 0
+    if (animeId === '0') {
+      // Start with episode 1
+      setCurrentEpisode(0);
+    } else {
+      // Redirect to anime library if not One Punch
+      navigate('/anime');
+    }
+  }, [animeId, navigate]);
+
+  useEffect(() => {
+    // Simulate earning tokens while watching
+    const interval = setInterval(() => {
+      setEarnedTokens(prev => prev + 1);
+    }, 10000); // Earn 1 token every 10 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-otaku-dark text-white">
       <Navbar />
-      
-      <div className="pt-16">
-        {/* Video Player */}
-        <div className="relative aspect-video bg-black overflow-hidden">
-          {/* Video placeholder */}
-          <div 
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url('/lovable-uploads/054764f3-fbb6-4a02-bd1b-1b13f66e7c97.png')`,
-              filter: 'brightness(0.7)'
-            }}
-          ></div>
-          
-          {/* Video controls */}
-          {showControls && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 flex flex-col justify-between p-4">
-              {/* Top controls */}
+      <div className="pt-16 max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-6">
+        {/* Main Video Area */}
+        <div className="flex-1 flex flex-col items-center">
+          <div className="relative w-full aspect-video bg-black overflow-hidden rounded-xl shadow-lg">
+            <iframe
+              className="w-full h-full rounded-xl"
+              src={`https://www.youtube.com/embed/${episodes[currentEpisode].videoId}?autoplay=1&modestbranding=1&rel=0&controls=1&iv_load_policy=3&disablekb=1`}
+              title={episodes[currentEpisode].title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            {/* Top controls */}
+            <div className="absolute top-0 left-0 right-0 p-4 bg-gradient-to-b from-black/70 to-transparent z-10">
               <div className="flex items-center justify-between">
                 <button 
                   onClick={() => navigate('/anime')}
@@ -62,7 +140,6 @@ const WatchPage = () => {
                   <ChevronLeft className="h-6 w-6 mr-2" />
                   Back to Library
                 </button>
-                
                 <div className="flex items-center space-x-4">
                   <button className="text-white/90 hover:text-white">
                     <Heart className="h-5 w-5" />
@@ -75,148 +152,46 @@ const WatchPage = () => {
                   </button>
                 </div>
               </div>
-              
-              {/* Center play button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button 
-                  onClick={togglePlay}
-                  className="w-20 h-20 rounded-full bg-otaku-purple/80 hover:bg-otaku-purple flex items-center justify-center transition-transform duration-200 hover:scale-110"
-                >
-                  {isPlaying ? (
-                    <Pause className="h-10 w-10" />
-                  ) : (
-                    <PlayCircle className="h-10 w-10" />
-                  )}
-                </button>
-              </div>
-              
-              {/* Bottom controls */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <button onClick={togglePlay} className="text-white">
-                    {isPlaying ? (
-                      <Pause className="h-5 w-5" />
-                    ) : (
-                      <PlayCircle className="h-5 w-5" />
-                    )}
-                  </button>
-                  
-                  <div className="text-sm">12:24 / 24:30</div>
-                  
-                  <div className="flex-grow">
-                    <div className="h-1 bg-white/30 rounded-full">
-                      <div className="h-full bg-otaku-purple rounded-full" style={{ width: '50%' }}></div>
-                    </div>
-                  </div>
-                  
-                  <button onClick={() => setIsMuted(!isMuted)} className="text-white">
-                    {isMuted ? (
-                      <VolumeX className="h-5 w-5" />
-                    ) : (
-                      <Volume2 className="h-5 w-5" />
-                    )}
-                  </button>
-                  
-                  <button className="text-white">
-                    <Settings className="h-5 w-5" />
-                  </button>
-                  
-                  <button className="text-white">
-                    <Maximize className="h-5 w-5" />
-                  </button>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <h1 className="text-xl font-bold">NEXUS: Beyond The Void</h1>
-                  <div className="text-sm text-white/80">Season 1, Episode {currentEpisode}</div>
-                </div>
-              </div>
             </div>
-          )}
-          
-          {/* Token earning indicator */}
-          <div className="absolute top-4 right-4 bg-black/70 rounded-full px-3 py-1 flex items-center">
-            <div className="w-5 h-5 rounded-full bg-otaku-pink flex items-center justify-center mr-2">
-              <span className="text-[10px] font-bold">OTK</span>
-            </div>
-            <span className="text-sm font-medium">{earnedTokens} tokens earned</span>
+
           </div>
+          {/* Anime Info Section Below Video */}
+          <section className="w-full max-w-2xl mx-auto mt-6 mb-4 p-6 rounded-2xl bg-gradient-to-br from-otaku-gray/80 to-otaku-dark/90 shadow-lg border border-otaku-purple/30">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-3 text-white leading-tight">One Punch Man</h1>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span className="bg-pink-500 text-xs font-semibold px-2 py-1 rounded shadow uppercase">PG-13</span>
+              <span className="bg-otaku-purple text-xs font-semibold px-2 py-1 rounded shadow uppercase">HD</span>
+              <span className="bg-green-600 text-xs font-semibold px-2 py-1 rounded shadow uppercase">CC</span>
+              <span className="bg-otaku-gray text-xs font-semibold px-2 py-1 rounded shadow uppercase">TV</span>
+              <span className="bg-otaku-gray text-xs font-semibold px-2 py-1 rounded shadow">24m</span>
+            </div>
+            <p className="text-base md:text-lg text-white/90 leading-relaxed">
+              In a world of superhuman beings, Saitama is a unique hero who can defeat any opponent with a single punch. But being devastatingly powerful is boring—Saitama is constantly seeking an opponent who can challenge him and give his life meaning. Join Saitama and his cyborg disciple Genos as they take on monsters, villains, and the Hero Association in this action-packed, hilarious anime adventure.
+            </p>
+          </section>
         </div>
-        
-        <div className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Episode info */}
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-2">Episode {currentEpisode}: The Awakening</h2>
-              <div className="flex items-center space-x-4 mb-4">
-                <span className="px-2 py-1 bg-otaku-purple/20 rounded text-xs">Fantasy</span>
-                <span className="px-2 py-1 bg-otaku-blue/20 rounded text-xs">Adventure</span>
-                <span className="px-2 py-1 bg-otaku-pink/20 rounded text-xs">Sci-Fi</span>
-                <div className="flex items-center">
-                  <span className="text-xs text-white/70">Original Release: May 2, 2025</span>
-                </div>
-              </div>
-              
-              <p className="text-white/80 mb-8">
-                Kira discovers a mysterious artifact that allows her to see into parallel dimensions. 
-                As she grapples with this newfound power, shadowy figures begin tracking her movements, 
-                revealing that her discovery is part of something far greater than she could have imagined.
-              </p>
-              
-              <div className="flex flex-wrap items-center gap-3">
-                <button className="btn-neon">
-                  <Heart className="h-4 w-4 mr-2" /> Add to Favorites
-                </button>
-                <button className="btn-outline-neon">
-                  <Share2 className="h-4 w-4 mr-2" /> Share
-                </button>
+        {/* Sidebar Episode List */}
+        <aside className="w-full md:w-96 max-w-full md:max-w-xs h-[420px] md:h-[calc(100vh-7rem)] overflow-y-auto bg-otaku-gray/70 rounded-xl shadow-lg p-4 flex flex-col gap-2">
+          <h2 className="text-xl font-bold mb-4 text-otaku-purple">Episodes</h2>
+          {episodes.map((episode, index) => (
+            <div 
+              key={episode.id}
+              className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-all mb-1
+                ${currentEpisode === index ? 'bg-otaku-purple/30 ring-2 ring-otaku-purple' : 'hover:bg-otaku-purple/10'}`}
+              onClick={() => setCurrentEpisode(index)}
+            >
+              <img 
+                src={`https://img.youtube.com/vi/${episode.videoId}/mqdefault.jpg`}
+                alt={episode.title}
+                className="w-20 h-12 object-cover rounded-md border border-otaku-purple/40"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className={`truncate font-medium ${currentEpisode === index ? 'text-otaku-purple' : ''}`}>{episode.title}</h3>
+                <p className="text-xs text-gray-400">{episode.duration}</p>
               </div>
             </div>
-            
-            {/* Episode list */}
-            <div className="bg-black/30 rounded-xl p-4">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold">Episodes</h3>
-                <div className="flex items-center">
-                  <button className="p-1 hover:bg-white/10 rounded-md">
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <span className="mx-2 text-sm">Season 1</span>
-                  <button className="p-1 hover:bg-white/10 rounded-md">
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-              
-              <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin' }}>
-                {episodes.map(episode => (
-                  <div 
-                    key={episode.id}
-                    className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors ${
-                      currentEpisode === episode.id ? 'bg-otaku-purple/30 border-l-2 border-otaku-purple' : 'hover:bg-white/10'
-                    }`}
-                    onClick={() => setCurrentEpisode(episode.id)}
-                  >
-                    <div className="w-16 h-10 rounded overflow-hidden mr-3">
-                      <img
-                        src={episode.thumbnail}
-                        alt={episode.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="font-medium text-sm">{episode.title}</h4>
-                      <p className="text-xs text-white/60">{episode.duration}</p>
-                    </div>
-                    {currentEpisode === episode.id && (
-                      <div className="w-2 h-2 rounded-full bg-otaku-purple"></div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+          ))}
+        </aside>
       </div>
     </div>
   );

@@ -9,9 +9,8 @@ const AnimeLibrary = () => {
   const [activeGenre, setActiveGenre] = useState('all');
   const [activeFilter, setActiveFilter] = useState('trending');
   
-  const genres = [
-    'All', 'Action', 'Romance', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mecha', 'Music', 'Mystery', 'Psychological', 'Sci-Fi', 'Slice of Life', 'Sports'
-  ];
+  // Only show these genres for advanced filter
+  const advancedGenres = ['All', 'Action', 'Romance', 'Comedy', 'Drama', 'Adventure'];
   
   const filters = [
     { id: 'trending', label: 'Trending' },
@@ -20,14 +19,24 @@ const AnimeLibrary = () => {
     { id: 'popular', label: 'Most Popular' },
   ];
   
+  // Read watch progress from localStorage
+  function getWatchProgress(animeId: number, totalEpisodes: number): number {
+    try {
+      const watched = JSON.parse(localStorage.getItem(`watched_${animeId}`) || '[]');
+      if (Array.isArray(watched) && totalEpisodes > 0) {
+        return Math.min(100, Math.round((watched.length / totalEpisodes) * 100));
+      }
+    } catch {}
+    return 0;
+  }
+
   const animeList = [
     {
-      id: 1,
+      id: 0,
       title: "One Punch Man Season 1",
       image: "https://m.media-amazon.com/images/M/MV5BNzMwOGQ5MWItNzE3My00ZDYyLTk4NzAtZWIyYWI0NTZhYzY0XkEyXkFqcGc@._V1_.jpg",
       rating: 4.7,
       genre: "Action",
-      progress: 80,
     },
     {
       id: 2,
@@ -35,7 +44,6 @@ const AnimeLibrary = () => {
       image: "https://m.media-amazon.com/images/M/MV5BNGYzMjBhMTMtM2Q4YS00OGMyLTk2ZWItYTg3MDk2YWIxNmVkXkEyXkFqcGc@._V1_.jpg",
       rating: 4.0,
       genre: "Action",
-      progress: 65,
     },
     {
       id: 3,
@@ -43,7 +51,6 @@ const AnimeLibrary = () => {
       image: "https://m.media-amazon.com/images/M/MV5BYWQwNjk3MDItNDAxMS00YTQ2LWEyNDctMGYyZTE5OGQxNGQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       rating: 3.9,
       genre: "Adventure",
-      progress: 45,
     },
     {
       id: 4,
@@ -51,7 +58,6 @@ const AnimeLibrary = () => {
       image: "https://m.media-amazon.com/images/M/MV5BMDg3MGVhNWUtYTQ2NS00ZDdiLTg5MTMtZmM5MjUzN2IxN2I4XkEyXkFqcGc@._V1_.jpg",
       rating: 4.8,
       genre: "Drama",
-      progress: 100,
     },
     {
       id: 5,
@@ -62,6 +68,13 @@ const AnimeLibrary = () => {
     }
   ];
 
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  // Filtered anime list by genre
+  const filteredAnime = activeGenre === 'all'
+    ? animeList
+    : animeList.filter(a => a.genre.toLowerCase() === activeGenre.toLowerCase());
+
   return (
     <div className="min-h-screen bg-otaku-dark text-white">
       <Navbar />
@@ -69,7 +82,6 @@ const AnimeLibrary = () => {
       <div className="container mx-auto px-4 pt-20 pb-16">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-cyber font-bold neon-text">Anime Library</h1>
-          
           {/* Search box */}
           <div className="relative hidden md:block w-64">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -82,7 +94,30 @@ const AnimeLibrary = () => {
             />
           </div>
         </div>
-        
+
+        {/* Advanced Filter Button */}
+        <div className="flex gap-4 mb-6">
+          <button
+            className="bg-otaku-purple px-4 py-2 rounded-lg font-bold text-white hover:bg-otaku-blue transition"
+            onClick={() => setShowAdvanced(v => !v)}
+          >
+            {showAdvanced ? 'Hide Advanced Filter' : 'Advanced Filter'}
+          </button>
+          {showAdvanced && (
+            <div className="flex gap-2">
+              {advancedGenres.map(genre => (
+                <button
+                  key={genre}
+                  className={`px-3 py-1 rounded-full font-semibold border-2 transition-colors ${activeGenre === genre.toLowerCase() ? 'bg-otaku-blue text-white border-otaku-blue' : 'bg-otaku-dark text-white border-otaku-purple/40 hover:bg-otaku-purple/40'}`}
+                  onClick={() => setActiveGenre(genre.toLowerCase())}
+                >
+                  {genre}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Mobile Search */}
         <div className="relative block md:hidden mb-6">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -95,56 +130,9 @@ const AnimeLibrary = () => {
           />
         </div>
         
-        {/* Filters bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Filters</h2>
-            <button className="flex items-center text-white/70 text-sm hover:text-white">
-              <Filter className="h-4 w-4 mr-1" />
-              Advanced Filter
-            </button>
-          </div>
-          
-          <div className="overflow-x-auto no-scrollbar">
-            <div className="flex space-x-2 mb-4 pb-2">
-              {filters.map(filter => (
-                <button
-                  key={filter.id}
-                  className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors ${
-                    activeFilter === filter.id
-                      ? 'bg-otaku-purple text-white'
-                      : 'bg-white/10 text-white/70 hover:bg-white/20'
-                  }`}
-                  onClick={() => setActiveFilter(filter.id)}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          <div className="overflow-x-auto no-scrollbar">
-            <div className="flex space-x-2 pb-2">
-              {genres.map((genre, index) => (
-                <button
-                  key={index}
-                  className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors ${
-                    activeGenre === genre.toLowerCase()
-                      ? 'bg-otaku-blue text-white'
-                      : 'bg-white/10 text-white/70 hover:bg-white/20'
-                  }`}
-                  onClick={() => setActiveGenre(genre.toLowerCase())}
-                >
-                  {genre}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        {/* Anime Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {animeList.map(anime => (
+        {/* Anime cards grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {filteredAnime.map((anime) => (
             <AnimeCard key={anime.id} anime={anime} />
           ))}
         </div>
