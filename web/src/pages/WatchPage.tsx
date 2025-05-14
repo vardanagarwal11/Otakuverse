@@ -19,92 +19,76 @@ const WatchPage = (): JSX.Element => {
   const [currentEpisode, setCurrentEpisode] = useState<number>(0);
   const [earnedTokens, setEarnedTokens] = useState<number>(0);
 
-  // One Punch Man episodes from YouTube playlist
-  const episodes: Episode[] = [
-    {
-      id: 1,
-      title: 'One Punch Man | Episode 1 | The Strongest Man',
-      videoId: 'BjzQITTh188',
-      duration: '23:39'
-    },
-    {
-      id: 2,
-      title: 'One Punch Man | Episode 2 | The Lone Cyborg',
-      videoId: 'K-JJm8ykSco',
-      duration: '23:39'
-    },
-    {
-      id: 3,
-      title: 'One Punch Man | Episode 3 | The Obsessive Scientist',
-      videoId: 'a2-vuLKoEak',
-      duration: '23:39'
-    },
-    {
-      id: 4,
-      title: 'One Punch Man | Episode 4 | The Modern Ninja',
-      videoId: '4Oh0T6o5-hs',
-      duration: '23:39'
-    },
-    {
-      id: 5,
-      title: 'One Punch Man | Episode 5 | The Ultimate Master',
-      videoId: 'EuOdDzt4H38',
-      duration: '23:39'
-    },
-    {
-      id: 6,
-      title: 'One Punch Man | Episode 6 | The Terrifying City',
-      videoId: 'dBPNIp0AcFI',
-      duration: '23:39'
-    },
-    {
-      id: 7,
-      title: 'One Punch Man | Episode 7 | The Ultimate Disciple',
-      videoId: 'g2miy-jdQKA',
-      duration: '23:39'
-    },
-    {
-      id: 8,
-      title: 'One Punch Man | Episode 8 | The Deep Sea King',
-      videoId: 'VnawF_we774',
-      duration: '23:39'
-    },
-    {
-      id: 9,
-      title: 'One Punch Man | Episode 9 | Unyielding Justice',
-      videoId: 'J-I0QKFexjE',
-      duration: '23:39'
-    },
-    {
-      id: 10,
-      title: 'One Punch Man | Episode 10 | Unparalleled Peril',
-      videoId: 'jsIvgxBO4mk',
-      duration: '23:39'
-    },
-    {
-      id: 11,
-      title: 'One Punch Man | Episode 11 | The Dominator of the Universe',
-      videoId: 'RWQCORZZLLw',
-      duration: '23:39'
-    },
-    {
-      id: 12,
-      title: 'One Punch Man | Episode 12 | The Strongest Hero',
-      videoId: '_J71sZlvcsI',
-      duration: '23:39'
-    }
+  // Episode lists for each anime
+  const onePunchManEpisodes: Episode[] = [
+    { id: 1, title: 'One Punch Man | Episode 1 | The Strongest Man', videoId: 'BjzQITTh188', duration: '23:39' },
+    { id: 2, title: 'One Punch Man | Episode 2 | The Lone Cyborg', videoId: 'K-JJm8ykSco', duration: '23:39' },
+    { id: 3, title: 'One Punch Man | Episode 3 | The Obsessive Scientist', videoId: 'a2-vuLKoEak', duration: '23:39' },
+    { id: 4, title: 'One Punch Man | Episode 4 | The Modern Ninja', videoId: '4Oh0T6o5-hs', duration: '23:39' },
+    { id: 5, title: 'One Punch Man | Episode 5 | The Ultimate Master', videoId: 'EuOdDzt4H38', duration: '23:39' },
+    { id: 6, title: 'One Punch Man | Episode 6 | The Terrifying City', videoId: 'dBPNIp0AcFI', duration: '23:39' },
+    { id: 7, title: 'One Punch Man | Episode 7 | The Ultimate Disciple', videoId: 'g2miy-jdQKA', duration: '23:39' },
+    { id: 8, title: 'One Punch Man | Episode 8 | The Deep Sea King', videoId: 'VnawF_we774', duration: '23:39' },
+    { id: 9, title: 'One Punch Man | Episode 9 | Unyielding Justice', videoId: 'J-I0QKFexjE', duration: '23:39' },
+    { id: 10, title: 'One Punch Man | Episode 10 | Unparalleled Peril', videoId: 'jsIvgxBO4mk', duration: '23:39' },
+    { id: 11, title: 'One Punch Man | Episode 11 | The Dominator of the Universe', videoId: 'RWQCORZZLLw', duration: '23:39' },
+    { id: 12, title: 'One Punch Man | Episode 12 | The Strongest Hero', videoId: '_J71sZlvcsI', duration: '23:39' }
   ];
 
-  useEffect(() => {
-    // Only load One Punch Man episodes for anime ID 0
-    if (animeId === '0') {
-      // Start with episode 1
-      setCurrentEpisode(0);
-    } else {
-      // Redirect to anime library if not One Punch
-      navigate('/anime');
+  const tokyoRevengersEpisodes: Episode[] = [
+    { id: 1, title: 'Tokyo Revengers | Episode 1', videoId: 'GRdOLXV2ctE', duration: '24:00' },
+    { id: 2, title: 'Tokyo Revengers | Episode 2', videoId: 'JpY_xHjepos', duration: '24:00' },
+    { id: 3, title: 'Tokyo Revengers | Episode 3', videoId: '2ckew7xZFow', duration: '24:00' },
+    { id: 4, title: 'Tokyo Revengers | Episode 4', videoId: 'Ri4cBO9NV_0', duration: '24:00' },
+    { id: 5, title: 'Tokyo Revengers | Episode 5', videoId: 'yEQHBODgkzg', duration: '24:00' },
+    { id: 6, title: 'Tokyo Revengers | Episode 6', videoId: 'oQV3iKxSjQY', duration: '24:00' },
+    { id: 7, title: 'Tokyo Revengers | Episode 7', videoId: 'qk2lPC1YTyo', duration: '24:00' },
+    { id: 8, title: 'Tokyo Revengers | Episode 8', videoId: 'UGF7CvTuAQo', duration: '24:00' },
+    { id: 9, title: 'Tokyo Revengers | Episode 9', videoId: 'Ar5EZkC7Dt0', duration: '24:00' },
+    { id: 10, title: 'Tokyo Revengers | Episode 10', videoId: 'tfhmZrdoPqs', duration: '24:00' },
+    { id: 11, title: 'Tokyo Revengers | Episode 11', videoId: 'QFVjaJYhbyM', duration: '24:00' },
+    { id: 12, title: 'Tokyo Revengers | Episode 12', videoId: 'qgMMfbS0ukY', duration: '24:00' },
+    { id: 13, title: 'Tokyo Revengers | Episode 13', videoId: 'tEf3Y3G1qSs', duration: '24:00' },
+    { id: 14, title: 'Tokyo Revengers | Episode 14', videoId: 'fknCVVjs_UI', duration: '24:00' },
+    { id: 15, title: 'Tokyo Revengers | Episode 15', videoId: 'lBJYLsf-BsU', duration: '24:00' },
+    { id: 16, title: 'Tokyo Revengers | Episode 16', videoId: 'OzGTuW9myO4', duration: '24:00' },
+    { id: 17, title: 'Tokyo Revengers | Episode 17', videoId: '6XtN_C288hw', duration: '24:00' },
+    { id: 18, title: 'Tokyo Revengers | Episode 18', videoId: '6SHQH-AkBfg', duration: '24:00' },
+    { id: 19, title: 'Tokyo Revengers | Episode 19', videoId: 'ig2HE1iSNaM', duration: '24:00' },
+    { id: 20, title: 'Tokyo Revengers | Episode 20', videoId: 'HqeWyYXz8a8', duration: '24:00' },
+    { id: 21, title: 'Tokyo Revengers | Episode 21', videoId: 'yRNepqENlrk', duration: '24:00' },
+    { id: 22, title: 'Tokyo Revengers | Episode 22', videoId: 'JlhmaO--pbA', duration: '24:00' },
+    { id: 23, title: 'Tokyo Revengers | Episode 23', videoId: 'DfrYMUrxd8g', duration: '24:00' },
+    { id: 24, title: 'Tokyo Revengers | Episode 24', videoId: 'M5Lh5epv1lY', duration: '24:00' },
+  ];
+
+  // Anime info by id
+  const animeInfo = {
+    '0': {
+      title: 'One Punch Man',
+      description: 'Saitama is a hero who only became a hero for fun. After three years of special training, he becomes so strong that he’s practically invincible. Now, alongside Genos, his faithful cyborg disciple, Saitama is ready to begin his official duties as a professional hero.',
+      episodes: onePunchManEpisodes,
+      cover: 'https://m.media-amazon.com/images/M/MV5BNzMwOGQ5MWItNzE3My00ZDYyLTk4NzAtZWIyYWI0NTZhYzY0XkEyXkFqcGc@._V1_.jpg',
+      totalEpisodes: onePunchManEpisodes.length,
+      rating: 'PG-13',
+    },
+    '2': {
+      title: 'Tokyo Revengers',
+      description: 'Takemichi Hanagaki learns that his ex-girlfriend was murdered by the Tokyo Manji Gang. Suddenly, he finds himself time-leaping twelve years into the past, where he vows to save her and change the future.',
+      episodes: tokyoRevengersEpisodes,
+      cover: 'https://m.media-amazon.com/images/M/MV5BNGYzMjBhMTMtM2Q4YS00OGMyLTk2ZWItYTg3MDk2YWIxNmVkXkEyXkFqcGc@._V1_.jpg',
+      totalEpisodes: tokyoRevengersEpisodes.length,
+      rating: 'PG-13',
     }
-  }, [animeId, navigate]);
+  };
+
+  // Pick anime or fallback
+  const selectedAnime = animeInfo[animeId || ''] || animeInfo['0'];
+  const episodes = selectedAnime.episodes;
+
+  useEffect(() => {
+    setCurrentEpisode(0);
+  }, [animeId]);
 
   useEffect(() => {
     // Simulate earning tokens while watching
@@ -157,16 +141,16 @@ const WatchPage = (): JSX.Element => {
           </div>
           {/* Anime Info Section Below Video */}
           <section className="w-full max-w-2xl mx-auto mt-6 mb-4 p-6 rounded-2xl bg-gradient-to-br from-otaku-gray/80 to-otaku-dark/90 shadow-lg border border-otaku-purple/30">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-3 text-white leading-tight">One Punch Man</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-3 text-white leading-tight">{selectedAnime.title}</h1>
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="bg-pink-500 text-xs font-semibold px-2 py-1 rounded shadow uppercase">PG-13</span>
+              <span className="bg-pink-500 text-xs font-semibold px-2 py-1 rounded shadow uppercase">{selectedAnime.rating}</span>
               <span className="bg-otaku-purple text-xs font-semibold px-2 py-1 rounded shadow uppercase">HD</span>
               <span className="bg-green-600 text-xs font-semibold px-2 py-1 rounded shadow uppercase">CC</span>
               <span className="bg-otaku-gray text-xs font-semibold px-2 py-1 rounded shadow uppercase">TV</span>
-              <span className="bg-otaku-gray text-xs font-semibold px-2 py-1 rounded shadow">24m</span>
+              <span className="bg-otaku-gray text-xs font-semibold px-2 py-1 rounded shadow">{episodes[currentEpisode].duration}</span>
             </div>
             <p className="text-base md:text-lg text-white/90 leading-relaxed">
-              In a world of superhuman beings, Saitama is a unique hero who can defeat any opponent with a single punch. But being devastatingly powerful is boring—Saitama is constantly seeking an opponent who can challenge him and give his life meaning. Join Saitama and his cyborg disciple Genos as they take on monsters, villains, and the Hero Association in this action-packed, hilarious anime adventure.
+              {selectedAnime.description}
             </p>
           </section>
         </div>

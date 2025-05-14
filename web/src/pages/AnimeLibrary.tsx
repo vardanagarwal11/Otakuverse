@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Search, Filter, ChevronDown } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import { Link } from 'react-router-dom';
 import AnimeCard from '@/components/AnimeCard';
 import Footer from '@/components/Footer';
 
@@ -37,6 +38,7 @@ const AnimeLibrary = () => {
       image: "https://m.media-amazon.com/images/M/MV5BNzMwOGQ5MWItNzE3My00ZDYyLTk4NzAtZWIyYWI0NTZhYzY0XkEyXkFqcGc@._V1_.jpg",
       rating: 4.7,
       genre: "Action",
+      link: "/watch/0"
     },
     {
       id: 2,
@@ -44,6 +46,7 @@ const AnimeLibrary = () => {
       image: "https://m.media-amazon.com/images/M/MV5BNGYzMjBhMTMtM2Q4YS00OGMyLTk2ZWItYTg3MDk2YWIxNmVkXkEyXkFqcGc@._V1_.jpg",
       rating: 4.0,
       genre: "Action",
+      link: "/watch/2"
     },
     {
       id: 3,
@@ -131,9 +134,15 @@ const AnimeLibrary = () => {
         </div>
         
         {/* Anime cards grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {filteredAnime.map((anime) => (
-            <AnimeCard key={anime.id} anime={anime} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
+          {filteredAnime.map(anime => (
+            anime.link ? (
+              <Link to={anime.link} key={anime.id}>
+                <AnimeCard anime={anime} />
+              </Link>
+            ) : (
+              <AnimeCard key={anime.id} anime={anime} />
+            )
           ))}
         </div>
         
