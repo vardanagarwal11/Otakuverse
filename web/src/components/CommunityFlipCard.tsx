@@ -1,5 +1,7 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './CommunityFlipCard.module.css';
 import { Link } from 'react-router-dom';
 import { Users, MessageSquare, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +13,7 @@ interface CommunityFlipCardProps {
 
 const CommunityFlipCard = ({ community }: CommunityFlipCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const navigate = useNavigate();
 
   const themeColors = {
     green: 'from-green-500/30 to-green-800/10 border-green-500/30',
@@ -26,13 +29,14 @@ const CommunityFlipCard = ({ community }: CommunityFlipCardProps) => {
 
   return (
     <div 
-      className="flip-card h-[400px] perspective-1000 cursor-pointer w-full"
+      className={`${styles['flip-card']} h-[400px] cursor-pointer w-full`}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
+      onClick={() => navigate(`/community-discord/${community.name.toLowerCase().replace(/\s+/g, '-')}`)}
     >
-      <div className={`flip-card-inner w-full h-full relative transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}`}>
+      <div className={`${styles['flip-card-inner']} w-full h-full relative ${isFlipped ? styles['rotate-y-180'] : ''}`}>
         {/* Front Side */}
-        <div className={`flip-card-front w-full h-full absolute backface-hidden rounded-xl overflow-hidden border bg-gradient-to-b ${themeColor}`}>
+        <div className={`${styles['flip-card-front']} w-full h-full absolute border bg-gradient-to-b ${themeColor}`}>
           <div className="h-[60%] relative">
             <img 
               src={community.image} 
@@ -70,23 +74,20 @@ const CommunityFlipCard = ({ community }: CommunityFlipCardProps) => {
           </div>
         </div>
         
-        {/* Back Side - Only enlarged image */}
-        <div className={`flip-card-back absolute w-full h-full backface-hidden rounded-xl overflow-hidden rotate-y-180 border`}>
-          <div className="w-full h-full overflow-hidden">
-            <img 
-              src={community.image} 
-              alt={community.name}
-              className="w-full h-full object-cover scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex items-end justify-center p-6">
-              <Link to={`/communities/${community.id}`}>
-                <button className="py-3 px-6 bg-white/20 hover:bg-white/30 transition-colors rounded-md flex items-center justify-center gap-2 font-cyber">
-                  <span>Visit Community</span>
-                  <ArrowRight size={16} />
-                </button>
-              </Link>
-            </div>
-          </div>
+        {/* Back Side - Solid #8E1215, no content */}
+        <div className={`${styles['flip-card-back']} absolute w-full h-full border`}>
+          {community.name === "Jujutsu Kaisen" && (
+            <span>Jujutsu Kaisen: Tap to join the fight against curses! Stay updated on the latest Jujutsu Kaisen news and fan discussions</span>
+          )}
+          {community.name === "My Hero Academia" && (
+            <span>My Hero Academia: Enter the world of heroes! Join the My Hero Academia fanbase and connect with fellow heroes-in-training.</span>
+          )}
+          {community.name === "Demon Slayer" && (
+            <span>Demon Slayer: Join the Demon Slayer Corps! Connect with fans and stay updated on all things Demon Slayer</span>
+          )}
+          {community.name === "Attack on Titan" && (
+            <span>Attack on Titan: Join the fight for freedom! Enter the Attack on Titan community and discuss theories, episodes, and more</span>
+          )}
         </div>
       </div>
     </div>

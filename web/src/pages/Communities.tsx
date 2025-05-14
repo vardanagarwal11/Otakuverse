@@ -16,7 +16,7 @@ const Communities = () => {
     {
       id: 1,
       name: "Demon Slayer",
-      image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800",
+      image: "https://www.sheknows.com/wp-content/uploads/2024/03/how-to-watch-demon-slayer-season-4-FI.jpg",
       icon: "🔥",
       members: 12450,
       posts: 3240,
@@ -33,7 +33,7 @@ const Communities = () => {
     {
       id: 2,
       name: "Attack on Titan",
-      image: "https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=800",
+      image: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/12/eren-vs-colossal-titan-in-trost.jpg",
       icon: "⚔️",
       members: 18320,
       posts: 5120,
@@ -50,7 +50,7 @@ const Communities = () => {
     {
       id: 3,
       name: "My Hero Academia",
-      image: "https://images.unsplash.com/photo-1560707303-4e980ce876ad?q=80&w=800",
+      image: "https://d.newsweek.com/en/full/2613601/my-hero-academia-season-8.webp?w=1600&h=900&q=88&f=624ff73786216c987d4c6348140b7e16",
       icon: "👊",
       members: 10280,
       posts: 2870,
@@ -66,25 +66,8 @@ const Communities = () => {
     },
     {
       id: 4,
-      name: "One Piece",
-      image: "https://images.unsplash.com/photo-1603984362497-0a878f607b92?q=80&w=800",
-      icon: "🏴‍☠️",
-      members: 22150,
-      posts: 7890,
-      theme: "red",
-      description: "Set sail for the Grand Line! Join the Straw Hat crew community to discuss manga chapters, anime episodes, and theories.",
-      categories: ["Adventure", "Fantasy", "Action"],
-      features: ["Chapter breakdowns", "Road to Laugh Tale discussions", "Devil Fruit encyclopedia"],
-      joinedDate: "June 2021",
-      topContributor: "PirateKing",
-      events: [
-        { title: "Treasure Hunt Challenge", date: "July 18, 2025" }
-      ]
-    },
-    {
-      id: 5,
       name: "Jujutsu Kaisen",
-      image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=800",
+      image: "https://occ-0-8407-92.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABdPXLFPbfzuRS2NPsXd5HnKXhKTOhpQ8zbyCrN4IbkdEJ2l6BRGHR7eozAepiuVI-JRetwR3lD5Q26D7yfpdMrwjOBzid9bIKIFK.jpg?r=794",
       icon: "👹",
       members: 9870,
       posts: 2450,
@@ -93,45 +76,6 @@ const Communities = () => {
       categories: ["Supernatural", "Horror", "Action"],
       features: ["Cursed technique analysis", "Weekly chapter discussions", "Domain expansion theories"],
       joinedDate: "October 2022"
-    },
-    {
-      id: 6,
-      name: "Chainsaw Man",
-      image: "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=800",
-      icon: "⛓️",
-      members: 8450,
-      posts: 2120,
-      theme: "orange",
-      description: "Dive into the chaotic world of Devils and Denji's quest for a normal life. Discuss the manga, anime, and all theories.",
-      categories: ["Horror", "Action", "Supernatural"],
-      features: ["Devil analysis", "Part 2 discussions", "Fan art showcases"],
-      joinedDate: "December 2022"
-    },
-    {
-      id: 7,
-      name: "Spy x Family",
-      image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?q=80&w=800",
-      icon: "🕵️",
-      members: 7890,
-      posts: 1820,
-      theme: "pink",
-      description: "Join the Forger family fan community! Share your love for Anya's telepathic antics, Loid's spy missions, and Yor's assassin skills.",
-      categories: ["Comedy", "Action", "Slice of Life"],
-      features: ["Episode reactions", "Anya meme thread", "Mission analysis"],
-      joinedDate: "April 2023"
-    },
-    {
-      id: 8,
-      name: "Violet Evergarden",
-      image: "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?q=80&w=800",
-      icon: "✉️",
-      members: 6240,
-      posts: 1540,
-      theme: "blue",
-      description: "Explore the emotional journey of Violet Evergarden as she discovers the meaning of love through her work as an Auto Memory Doll.",
-      categories: ["Drama", "Fantasy", "Slice of Life"],
-      features: ["Letter writing contests", "Character analysis", "Art appreciation"],
-      joinedDate: "January 2023"
     }
   ];
   
