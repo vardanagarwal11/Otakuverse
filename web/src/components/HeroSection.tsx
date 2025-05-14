@@ -49,7 +49,7 @@ const HeroSection = () => {
             The Ultimate Anime Community Platform
           </p>
           <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Join dedicated anime communities, collect exclusive NFTs, and earn rewards while watching your favorite series on the first decentralized anime platform.
+          Join anime communities, collect NFTs, and earn rewards on the first decentralized anime platform.
           </p>
           
           {/* Waitlist Form */}

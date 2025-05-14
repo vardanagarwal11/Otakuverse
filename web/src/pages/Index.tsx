@@ -10,7 +10,6 @@ import Footer from "@/components/Footer";
 import FeaturesSection from "@/components/FeaturesSection";
 import NFTShowcase from "@/components/NFTShowcase";
 import CommunitiesShowcase from "@/components/CommunitiesShowcase";
-import WaitlistSection from "@/components/WaitlistSection";
 
 const Index = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -66,7 +65,7 @@ const Index = () => {
       avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=120",
       followers: "120K",
       content: "Original Animation",
-      earnings: "45,569 OTK"
+      earnings: "45,569 SOL"
     },
     {
       id: 2,
@@ -74,7 +73,7 @@ const Index = () => {
       avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120",
       followers: "95K",
       content: "Manga & Comics",
-      earnings: "32,450 OTK"
+      earnings: "32,450 SOL"
     },
     {
       id: 3,
@@ -82,7 +81,7 @@ const Index = () => {
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120",
       followers: "86K",
       content: "Voice Acting",
-      earnings: "28,120 OTK"
+      earnings: "28,120 SOL"
     }
   ];
 
@@ -99,11 +98,6 @@ const Index = () => {
       
       {/* Core Features Section */}
       <FeaturesSection />
-      
-      {/* Waitlist Section (Replacing the Crowdfunding Section) */}
-      <section className="container mx-auto px-4 py-16" style={{ transform: `translateY(-${scrollPosition * 0.05}px)` }}>
-        <WaitlistSection />
-      </section>
       
       {/* Communities Showcase */}
       <CommunitiesShowcase />
