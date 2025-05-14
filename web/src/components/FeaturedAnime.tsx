@@ -51,7 +51,7 @@ const FeaturedAnime = ({
           <div className="mb-6">
             <div className="flex justify-between text-sm mb-2">
               <span className="text-white/70">Funded: {progress}%</span>
-              <span className="text-white/70">Goal: 100,000 OTK</span>
+              <span className="text-white/70">Goal: 100,000 SOL</span>
             </div>
             <Progress value={progress} className="h-2 bg-white/20" />
           </div>
@@ -67,7 +67,7 @@ const FeaturedAnime = ({
             </div>
             <div className="bg-black/30 rounded-lg p-3 text-center">
               <p className="text-sm text-white/70">Min. Pledge</p>
-              <p className="font-cyber font-bold neon-text-blue">50 OTK</p>
+              <p className="font-cyber font-bold neon-text-blue">50 SOL</p>
             </div>
           </div>
           

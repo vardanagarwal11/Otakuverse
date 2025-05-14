@@ -1,6 +1,8 @@
 
 import { Star } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import { toast } from "@/components/ui/sonner";
 
 interface AnimeCardProps {
   anime: {
@@ -14,6 +16,8 @@ interface AnimeCardProps {
 }
 
 const AnimeCard = ({ anime }: AnimeCardProps) => {
+  const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
   return (
     <div className="anime-card group">
       <div className="relative overflow-hidden aspect-[3/4]">
@@ -23,12 +27,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         
-        {anime.progress && (
-          <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2">
-            <Progress value={anime.progress} className="h-1.5 bg-white/20" />
-            <p className="text-xs text-right mt-1 text-white/80">{anime.progress}%</p>
-          </div>
-        )}
+
         
         <div className="absolute top-2 left-2 bg-black/60 rounded-full px-2 py-1 flex items-center">
           <Star className="w-3 h-3 text-yellow-400 mr-1" fill="currentColor" />
@@ -42,12 +41,24 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
           <div className="p-4 w-full">
             <div className="flex items-center space-x-2 mb-2">
-              <div className="h-6 w-6 rounded-full bg-otaku-pink flex items-center justify-center">
-                <span className="text-xs font-bold">OTK</span>
+              <div className="h-6 w-6 rounded-full bg-[#9944FF] flex items-center justify-center">
+                <span className="text-xs font-bold">SOL</span>
               </div>
               <span className="text-xs text-white/90">Earn while watching</span>
             </div>
-            <button className="w-full py-2 bg-otaku-blue hover:bg-otaku-blue-sky transition-colors rounded-md text-sm font-medium">
+            <button 
+              onClick={() => {
+                if (!isSignedIn) {
+                  toast.error("You need to be logged in to watch anime.", {
+                    style: { background: '#e11d48', color: 'white', fontWeight: 'bold', fontSize: '1.1rem' },
+                    duration: 5000,
+                  });
+                  return;
+                }
+                navigate(`/watch/${anime.id}`);
+              }}
+              className="w-full py-2 bg-otaku-blue hover:bg-otaku-blue-sky transition-colors rounded-md text-sm font-medium"
+            >
               Watch Now
             </button>
           </div>
