@@ -39,7 +39,7 @@ const WaitlistForm = () => {
         value={email}
         onChange={e => setEmail(e.target.value)}
         required
-        placeholder="Enter your email for waitlist"
+        placeholder="Enter your email"
         className="px-4 py-2 rounded-lg border border-otaku-purple bg-black/60 text-white font-cyber focus:outline-none focus:ring-2 focus:ring-otaku-purple min-w-[250px]"
       />
       <Button type="submit" className="bg-otaku-purple hover:bg-otaku-purple-vivid text-white font-cyber min-w-[140px]" disabled={loading}>
@@ -47,9 +47,6 @@ const WaitlistForm = () => {
       </Button>
       {success && <span className="text-green-400 font-cyber ml-4">Joined!</span>}
       {error && <span className="text-red-400 font-cyber ml-4">{error}</span>}
-      <div className="mt-4 text-center text-white">
-        Be the first to access our exclusive creator tools, community features, and NFT drops. Sign up now and get priority access when we launch!
-      </div>
     </form>
   );
 };
