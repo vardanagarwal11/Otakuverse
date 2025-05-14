@@ -11,7 +11,7 @@ const Dashboard = () => {
   const userData = {
     name: "Anime Fan",
     watchTime: "124h 35m",
-    earnedTokens: "2,456 OTK",
+    earnedTokens: "2,456 SOL",
     nftBadges: 8,
     watchlist: 12
   };
