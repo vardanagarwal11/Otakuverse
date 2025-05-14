@@ -91,34 +91,7 @@ const CommunitiesShowcase = () => {
               <div className="p-4">
                 <p className="text-white/80 text-sm mb-4">{community.description}</p>
                 
-                {/* Top Contributors */}
-                <div className="mb-4">
-                  <h4 className="text-sm text-white/70 mb-2">Top Contributors</h4>
-                  <div className="flex items-center">
-                    {community.topContributors.map((contributor, index) => (
-                      <div key={index} className="flex flex-col items-center mr-4">
-                        <div className="relative">
-                          <img 
-                            src={contributor.avatar} 
-                            alt={contributor.username} 
-                            className={`w-10 h-10 rounded-full object-cover border-2 ${
-                              contributor.isLeader ? 'border-otaku-pink' : 'border-otaku-purple/50'
-                            }`}
-                          />
-                          {contributor.isLeader && (
-                            <div className="absolute -bottom-1 -right-1 bg-otaku-pink rounded-full p-0.5">
-                              <Heart className="w-3 h-3 text-white fill-white" />
-                            </div>
-                          )}
-                        </div>
-                        <span className="text-xs mt-1">{contributor.username}</span>
-                        {contributor.isLeader && (
-                          <Badge variant="outline" className="text-[10px] h-4 border-otaku-pink text-otaku-pink mt-1">Leader</Badge>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+
                 
                 <Link to={`/communities/${community.id}`}>
                   <button className="w-full py-2 bg-otaku-purple hover:bg-otaku-purple-vivid transition-colors rounded-md text-sm font-medium font-cyber">

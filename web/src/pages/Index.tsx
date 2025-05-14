@@ -9,7 +9,7 @@ import CreatorCard from "@/components/CreatorCard";
 import Footer from "@/components/Footer";
 import FeaturesSection from "@/components/FeaturesSection";
 import NFTShowcase from "@/components/NFTShowcase";
-import CommunitiesShowcase from "@/components/CommunitiesShowcase";
+import CommunityFlipCard from "@/components/CommunityFlipCard";
 
 const Index = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -25,36 +25,32 @@ const Index = () => {
 
   const trendingAnime = [
     {
-      id: 1,
-      title: "Demon Slayer",
-      image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500",
-      rating: 4.8,
+      id: 0,
+      title: "One Punch Man Season 1",
+      image: "https://m.media-amazon.com/images/M/MV5BNzMwOGQ5MWItNzE3My00ZDYyLTk4NzAtZWIyYWI0NTZhYzY0XkEyXkFqcGc@._V1_.jpg",
+      rating: 4.7,
       genre: "Action",
-      progress: 80,
     },
     {
       id: 2,
-      title: "Attack on Titan",
-      image: "https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=500",
-      rating: 4.9,
-      genre: "Drama",
-      progress: 65,
+      title: "Tokyo Revengers Season 1",
+      image: "https://m.media-amazon.com/images/M/MV5BNGYzMjBhMTMtM2Q4YS00OGMyLTk2ZWItYTg3MDk2YWIxNmVkXkEyXkFqcGc@._V1_.jpg",
+      rating: 4.0,
+      genre: "Action",
     },
     {
       id: 3,
-      title: "My Hero Academia",
-      image: "https://images.unsplash.com/photo-1560707303-4e980ce876ad?q=80&w=500",
-      rating: 4.7,
+      title: "Mushoku Tensei: Jobless Reincarnation Season 1",
+      image: "https://m.media-amazon.com/images/M/MV5BYWQwNjk3MDItNDAxMS00YTQ2LWEyNDctMGYyZTE5OGQxNGQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      rating: 3.9,
       genre: "Adventure",
-      progress: 45,
     },
     {
       id: 4,
-      title: "Jujutsu Kaisen",
-      image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=500",
-      rating: 4.9,
-      genre: "Action",
-      progress: 100,
+      title: "Classroom of the Elite Season 1",
+      image: "https://m.media-amazon.com/images/M/MV5BMDg3MGVhNWUtYTQ2NS00ZDdiLTg5MTMtZmM5MjUzN2IxN2I4XkEyXkFqcGc@._V1_.jpg",
+      rating: 4.8,
+      genre: "Drama",
     }
   ];
 
@@ -99,8 +95,54 @@ const Index = () => {
       {/* Core Features Section */}
       <FeaturesSection />
       
-      {/* Communities Showcase */}
-      <CommunitiesShowcase />
+      {/* Communities Showcase - replaced with communities from Communities.tsx */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-cyber font-bold neon-text">Community Hubs</h2>
+          <Link to="/communities" className="flex items-center text-otaku-purple hover:text-otaku-purple-vivid transition-colors group">
+            <span className="mr-2 font-cyber">View All</span>
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              id: 1,
+              name: "Demon Slayer",
+              image: "https://www.sheknows.com/wp-content/uploads/2024/03/how-to-watch-demon-slayer-season-4-FI.jpg",
+              icon: "🔥",
+              members: 12450,
+              posts: 3240,
+              theme: "green",
+              description: "Join the Demon Slayer Corps! Discuss episodes, share fan theories, and connect with other fans of Tanjiro's journey.",
+              categories: ["Action", "Fantasy", "Supernatural"],
+            },
+            {
+              id: 2,
+              name: "Attack on Titan",
+              image: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/12/eren-vs-colossal-titan-in-trost.jpg",
+              icon: "⚔️",
+              members: 18320,
+              posts: 5120,
+              theme: "blue",
+              description: "Dedicate your hearts! The ultimate community for discussing all things Attack on Titan, from the anime to the manga's conclusion.",
+              categories: ["Dark Fantasy", "Action", "Post-Apocalyptic"],
+            },
+            {
+              id: 3,
+              name: "My Hero Academia",
+              image: "https://d.newsweek.com/en/full/2613601/my-hero-academia-season-8.webp?w=1600&h=900&q=88&f=624ff73786216c987d4c6348140b7e16",
+              icon: "👊",
+              members: 10280,
+              posts: 2870,
+              theme: "yellow",
+              description: "Go beyond, plus ultra! Join fellow heroes to discuss quirks, character development, and the latest episodes.",
+              categories: ["Superheroes", "Action", "School"],
+            }
+          ].map(community => (
+            <CommunityFlipCard key={community.id} community={community} />
+          ))}
+        </div>
+      </section>
       
       {/* NFT Marketplace Showcase */}
       <NFTShowcase />
