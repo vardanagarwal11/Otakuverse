@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '@clerk/clerk-react';
+import { toast } from '@/components/ui/sonner';
 import { useNavigate, useParams } from 'react-router-dom';
 import { 
   ChevronLeft,
@@ -14,7 +16,18 @@ interface Episode {
 }
 
 const WatchPage = (): JSX.Element => {
+  const { isSignedIn } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      toast.error('You need to be logged in to watch anime.', {
+        style: { background: '#e11d48', color: 'white', fontWeight: 'bold', fontSize: '1.1rem' },
+        duration: 5000,
+      });
+      navigate('/anime', { replace: true });
+    }
+  }, [isSignedIn, navigate]);
   const { animeId } = useParams<{ animeId: string }>();
   const [currentEpisode, setCurrentEpisode] = useState<number>(0);
   const [earnedTokens, setEarnedTokens] = useState<number>(0);
@@ -62,6 +75,65 @@ const WatchPage = (): JSX.Element => {
     { id: 24, title: 'Tokyo Revengers | Episode 24', videoId: 'M5Lh5epv1lY', duration: '24:00' },
   ];
 
+  // Mushoku Tensei episodes
+  const mushokuTenseiEpisodes: Episode[] = [
+    { id: 1, title: 'Mushoku Tensei | Episode 1', videoId: 'Y4bP1PMvsag', duration: '23:40' },
+    { id: 2, title: 'Mushoku Tensei | Episode 2', videoId: 'WqlyT_-kIGM', duration: '23:40' },
+    { id: 3, title: 'Mushoku Tensei | Episode 3', videoId: '5erYkpLWFDM', duration: '23:40' },
+    { id: 4, title: 'Mushoku Tensei | Episode 4', videoId: 'Cnk2AE-fpU0', duration: '23:40' },
+    { id: 5, title: 'Mushoku Tensei | Episode 5', videoId: 'UmW7C9WO9Ys', duration: '23:40' },
+    { id: 6, title: 'Mushoku Tensei | Episode 6', videoId: 'xYyrhWIVz3Y', duration: '23:40' },
+    { id: 7, title: 'Mushoku Tensei | Episode 7', videoId: '4Txga5H63T0', duration: '23:40' },
+    { id: 8, title: 'Mushoku Tensei | Episode 8', videoId: 'tQRZ7uNYvI0', duration: '23:40' },
+    { id: 9, title: 'Mushoku Tensei | Episode 9', videoId: 'rYP8cQFB8Lw', duration: '23:40' },
+    { id: 10, title: 'Mushoku Tensei | Episode 10', videoId: 'eOoDm_HAzn0', duration: '23:40' },
+    { id: 11, title: 'Mushoku Tensei | Episode 11', videoId: 'b2UulZTwmgo', duration: '23:40' },
+    { id: 12, title: 'Mushoku Tensei | Episode 12', videoId: 'azF6Md0h6-Y', duration: '23:40' },
+    { id: 13, title: 'Mushoku Tensei | Episode 13', videoId: 'p5Tv1nRrCf8', duration: '23:40' },
+    { id: 14, title: 'Mushoku Tensei | Episode 14', videoId: 'm7NTHYCOkHw', duration: '23:40' },
+    { id: 15, title: 'Mushoku Tensei | Episode 15', videoId: 'qzTzy2L7fCw', duration: '23:40' },
+    { id: 16, title: 'Mushoku Tensei | Episode 16', videoId: 'ykEWrQ1dmTw', duration: '23:40' },
+    { id: 17, title: 'Mushoku Tensei | Episode 17', videoId: 'T7JGMkE9ykw', duration: '23:40' },
+    { id: 18, title: 'Mushoku Tensei | Episode 18', videoId: 'GB_lLr2vLrE', duration: '23:40' },
+    { id: 19, title: 'Mushoku Tensei | Episode 19', videoId: 'FCpr6ai-c-A', duration: '23:40' },
+    { id: 20, title: 'Mushoku Tensei | Episode 20', videoId: 'EQlACX9jxoE', duration: '23:40' },
+    { id: 21, title: 'Mushoku Tensei | Episode 21', videoId: '5uMwO2Sxklw', duration: '23:40' },
+    { id: 22, title: 'Mushoku Tensei | Episode 22', videoId: 'ncSPqgk8zKI', duration: '23:40' },
+  ];
+
+  // Classroom of the Elite episodes
+  const classroomEliteEpisodes: Episode[] = [
+    { id: 1, title: 'Classroom of the Elite | Episode 1', videoId: '2wNQpTgrmDQ', duration: '23:40' },
+    { id: 2, title: 'Classroom of the Elite | Episode 2', videoId: 'pgvnNgMoVFs', duration: '23:40' },
+    { id: 3, title: 'Classroom of the Elite | Episode 3', videoId: 'fr514YoeVuA', duration: '23:40' },
+    { id: 4, title: 'Classroom of the Elite | Episode 4', videoId: 'ekGOMkzEsVk', duration: '23:40' },
+    { id: 5, title: 'Classroom of the Elite | Episode 5', videoId: 'nfWrHCdBQu0', duration: '23:40' },
+    { id: 6, title: 'Classroom of the Elite | Episode 6', videoId: 'Cxi3Lc4eW3U', duration: '23:40' },
+    { id: 7, title: 'Classroom of the Elite | Episode 7', videoId: 'Ewclo0bValk', duration: '23:40' },
+    { id: 8, title: 'Classroom of the Elite | Episode 8', videoId: 'cK8V3LSFvX0', duration: '23:40' },
+    { id: 9, title: 'Classroom of the Elite | Episode 9', videoId: '00qE5_C4qPM', duration: '23:40' },
+    { id: 10, title: 'Classroom of the Elite | Episode 10', videoId: 'Q9oWQlC8G_s', duration: '23:40' },
+    { id: 11, title: 'Classroom of the Elite | Episode 11', videoId: '2mkDWrdybhA', duration: '23:40' },
+    { id: 12, title: 'Classroom of the Elite | Episode 12', videoId: 'DzznLoRH7AM', duration: '23:40' },
+  ];
+
+  // God of High School episodes
+  const godOfHighSchoolEpisodes: Episode[] = [
+    { id: 1, title: 'God of High School | Episode 1', videoId: 'sfqqY-2jIJQ', duration: '23:40' },
+    { id: 2, title: 'God of High School | Episode 2', videoId: 'MHQ4gXkfaDA', duration: '23:40' },
+    { id: 3, title: 'God of High School | Episode 3', videoId: '6-9jLfEzcMc', duration: '23:40' },
+    { id: 4, title: 'God of High School | Episode 4', videoId: 'uVqulFY4GZQ', duration: '23:40' },
+    { id: 5, title: 'God of High School | Episode 5', videoId: 'gargILBCdZg', duration: '23:40' },
+    { id: 6, title: 'God of High School | Episode 6', videoId: 'CoUOH5u_eHo', duration: '23:40' },
+    { id: 7, title: 'God of High School | Episode 7', videoId: 'umTNGjV6BgQ', duration: '23:40' },
+    { id: 8, title: 'God of High School | Episode 8', videoId: 'Dzt2LH-k25w', duration: '23:40' },
+    { id: 9, title: 'God of High School | Episode 9', videoId: 'HelIhdn9ZaY', duration: '23:40' },
+    { id: 10, title: 'God of High School | Episode 10', videoId: '9cjZ8fG6OkY', duration: '23:40' },
+    { id: 11, title: 'God of High School | Episode 11', videoId: 'bafzu3iU_sw', duration: '23:40' },
+    { id: 12, title: 'God of High School | Episode 12', videoId: 'qWyDxuSeAHs', duration: '23:40' },
+    { id: 13, title: 'God of High School | Episode 13', videoId: 'vJ2-kwRZnFI', duration: '23:40' },
+  ];
+
   // Anime info by id
   const animeInfo = {
     '0': {
@@ -78,6 +150,33 @@ const WatchPage = (): JSX.Element => {
       episodes: tokyoRevengersEpisodes,
       cover: 'https://m.media-amazon.com/images/M/MV5BNGYzMjBhMTMtM2Q4YS00OGMyLTk2ZWItYTg3MDk2YWIxNmVkXkEyXkFqcGc@._V1_.jpg',
       totalEpisodes: tokyoRevengersEpisodes.length,
+      rating: 'PG-13',
+    }
+    ,
+    '3': {
+      title: 'Mushoku Tensei: Jobless Reincarnation',
+      description: 'A 34-year-old NEET is reincarnated in a fantasy world as Rudeus Greyrat, determined to live his new life without regrets. Join him as he learns magic, meets friends, and faces epic adventures.',
+      episodes: mushokuTenseiEpisodes,
+      cover: 'https://m.media-amazon.com/images/I/81p2mYp1KjL._AC_UF1000,1000_QL80_.jpg',
+      totalEpisodes: mushokuTenseiEpisodes.length,
+      rating: 'R',
+    }
+    ,
+    '4': {
+      title: 'Classroom of the Elite',
+      description: 'Kiyotaka Ayanokoji enrolls at the prestigious Tokyo Metropolitan Advanced Nurturing High School, where students are given unprecedented freedom. But the school’s system is designed to pit students against each other in a ruthless competition for supremacy.',
+      episodes: classroomEliteEpisodes,
+      cover: 'https://m.media-amazon.com/images/I/81aYzfoalGL._AC_UF1000,1000_QL80_.jpg',
+      totalEpisodes: classroomEliteEpisodes.length,
+      rating: 'PG-13',
+    }
+    ,
+    '5': {
+      title: 'The God of High School',
+      description: 'Jin Mori, a high school student and martial artist, enters a tournament where he discovers that the competition is much more than it seems, involving gods, supernatural powers, and a quest for the ultimate prize.',
+      episodes: godOfHighSchoolEpisodes,
+      cover: 'https://m.media-amazon.com/images/I/81pXyQ5xK6L._AC_UF1000,1000_QL80_.jpg',
+      totalEpisodes: godOfHighSchoolEpisodes.length,
       rating: 'PG-13',
     }
   };
