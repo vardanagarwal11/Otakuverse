@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 const AnimeLibrary = () => {
   const [activeGenre, setActiveGenre] = useState('all');
   const [activeFilter, setActiveFilter] = useState('trending');
+  const [searchTerm, setSearchTerm] = useState('');
   
   // Only show these genres for advanced filter
   const advancedGenres = ['All', 'Action', 'Romance', 'Comedy', 'Drama', 'Adventure'];
@@ -73,10 +74,12 @@ const AnimeLibrary = () => {
 
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  // Filtered anime list by genre
-  const filteredAnime = activeGenre === 'all'
-    ? animeList
-    : animeList.filter(a => a.genre.toLowerCase() === activeGenre.toLowerCase());
+  // Filtered anime list by genre and search
+  const filteredAnime = animeList.filter(a => {
+    const matchesGenre = activeGenre === 'all' || a.genre.toLowerCase() === activeGenre.toLowerCase();
+    const matchesSearch = a.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesGenre && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen bg-otaku-dark text-white">
@@ -93,6 +96,8 @@ const AnimeLibrary = () => {
             <input
               type="text"
               placeholder="Search anime..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
               className="bg-otaku-dark border border-otaku-purple/30 text-white placeholder-white/50 rounded-full py-2 pl-10 pr-4 w-full focus:outline-none focus:ring-2 focus:ring-otaku-purple/50"
             />
           </div>
@@ -129,6 +134,8 @@ const AnimeLibrary = () => {
           <input
             type="text"
             placeholder="Search anime..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
             className="bg-otaku-dark border border-otaku-purple/30 text-white placeholder-white/50 rounded-full py-2 pl-10 pr-4 w-full focus:outline-none focus:ring-2 focus:ring-otaku-purple/50"
           />
         </div>
