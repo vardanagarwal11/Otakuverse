@@ -136,19 +136,28 @@ const AnimeLibrary = () => {
         {/* Anime cards grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
           {filteredAnime.map(anime => (
-            anime.link ? (
-              <Link to={anime.link} key={anime.id}>
-                <AnimeCard anime={anime} />
-              </Link>
-            ) : (
-              <AnimeCard key={anime.id} anime={anime} />
-            )
+            <AnimeCard key={anime.id} anime={anime} />
           ))}
         </div>
         
         {/* Load more */}
         <div className="mt-12 text-center">
-          <button className="btn-outline-neon px-8 py-3 inline-flex items-center">
+          <button
+            className="btn-outline-neon px-8 py-3 inline-flex items-center"
+            onClick={() => {
+              if (window && window['toast']) {
+                window['toast']('More anime coming soon', {
+                  duration: 3500,
+                  style: {
+                    background: 'linear-gradient(90deg, #3a2257 0%, #8a4fff 100%)',
+                    color: '#fff',
+                  },
+                  className: 'neon-text',
+                  icon: false,
+                });
+              }
+            }}
+          >
             Load More <ChevronDown className="ml-2 h-4 w-4" />
           </button>
         </div>

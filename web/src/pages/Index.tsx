@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -11,8 +10,11 @@ import FeaturesSection from "@/components/FeaturesSection";
 import NFTShowcase from "@/components/NFTShowcase";
 import CommunityFlipCard from "@/components/CommunityFlipCard";
 
+import ComingSoonModal from '@/components/ComingSoonModal';
+
 const Index = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,9 +101,21 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-cyber font-bold neon-text">Community Hubs</h2>
-          <Link to="/communities" className="flex items-center text-otaku-purple hover:text-otaku-purple-vivid transition-colors group">
-            <span className="mr-2 font-cyber">View All</span>
-          </Link>
+          <Link to="/communities" 
+            style={{
+              border: '1.5px solid #a78bfa',
+              background: '#181c27',
+              borderRadius: '2rem',
+              fontFamily: 'var(--font-cyber, Orbitron, monospace)',
+              color: '#a78bfa',
+              padding: '0.55rem 1.8rem',
+              fontSize: '1.2rem',
+              textShadow: '0 0 8px #a78bfa',
+              transition: 'all 0.2s',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+          >View All</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
@@ -148,10 +162,27 @@ const Index = () => {
       <NFTShowcase />
       
       {/* Top Earning Creators */}
+      <ComingSoonModal open={showComingSoon} onClose={() => setShowComingSoon(false)} />
       <section className="container mx-auto px-4 py-16 bg-gradient-to-b from-transparent to-black/30">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-cyber font-bold neon-text-blue">Top Earning Creators</h2>
-          <Link to="/creators" className="btn-outline-neon text-sm">View All</Link>
+          <button
+            type="button"
+            onClick={() => setShowComingSoon(true)}
+            style={{
+              border: '1.5px solid #a78bfa',
+              background: '#181c27',
+              borderRadius: '2rem',
+              fontFamily: 'var(--font-cyber, Orbitron, monospace)',
+              color: '#a78bfa',
+              padding: '0.55rem 1.8rem',
+              fontSize: '1.2rem',
+              textShadow: '0 0 8px #a78bfa',
+              transition: 'all 0.2s',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+          >View All</button>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -165,7 +196,21 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-cyber font-bold neon-text-pink">Popular Shows</h2>
-          <Link to="/anime" className="btn-outline-neon text-sm">View Library</Link>
+          <Link to="/anime" 
+            style={{
+              border: '1.5px solid #a78bfa',
+              background: '#181c27',
+              borderRadius: '2rem',
+              fontFamily: 'var(--font-cyber, Orbitron, monospace)',
+              color: '#a78bfa',
+              padding: '0.55rem 1.8rem',
+              fontSize: '1.2rem',
+              textShadow: '0 0 8px #a78bfa',
+              transition: 'all 0.2s',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+          >View Library</Link>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

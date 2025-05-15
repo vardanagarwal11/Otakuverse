@@ -78,10 +78,22 @@ const NFTShowcase = () => {
     <section className="container mx-auto px-4 py-16 overflow-hidden relative">
       <div className="flex justify-between items-center mb-12">
         <h2 className="text-3xl font-cyber font-bold neon-text-blue">NFT Marketplace</h2>
-        <Link to="/marketplace" className="flex items-center text-otaku-blue hover:text-otaku-blue-sky transition-colors">
-          <span className="mr-2">View All</span>
-          <ArrowRight size={16} />
-        </Link>
+        <Link to="/marketplace"
+          style={{
+            border: '1.5px solid #a78bfa',
+            background: '#181c27',
+            borderRadius: '2rem',
+            fontFamily: 'var(--font-cyber, Orbitron, monospace)',
+            color: '#a78bfa',
+            padding: '0.55rem 1.8rem',
+            fontSize: '1.2rem',
+            textShadow: '0 0 8px #a78bfa',
+            transition: 'all 0.2s',
+            cursor: 'pointer',
+            outline: 'none',
+            display: 'inline-block',
+          }}
+        >View All</Link>
       </div>
       
       <div className="relative h-[560px]">

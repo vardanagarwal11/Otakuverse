@@ -21,9 +21,25 @@ const WatchPage = (): JSX.Element => {
 
   useEffect(() => {
     if (!isSignedIn) {
-      toast.error('You need to be logged in to watch anime.', {
-        style: { background: '#e11d48', color: 'white', fontWeight: 'bold', fontSize: '1.1rem' },
-        duration: 5000,
+      toast('You need to be logged in to watch anime.', {
+        duration: 3500,
+        style: {
+          background: 'linear-gradient(90deg, #3a2257 0%, #8a4fff 100%)',
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: '1.14rem',
+          borderRadius: '0.91rem',
+          border: '2px solid #14F194',
+          fontFamily: 'var(--font-cyber, "Orbitron", "monospace")',
+          boxShadow: '0 0 16px #14F194, 0 0 32px #8a4fff',
+          padding: '0.855rem 1.71rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minWidth: '228px',
+        },
+        className: 'neon-text',
+        icon: false,
       });
       navigate('/anime', { replace: true });
     }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useWallet from "@/hooks/useWallet";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Featured NFTs that will be in the rotating carousel
@@ -323,12 +323,25 @@ const Marketplace = () => {
 
           {/* Load More Button at the bottom - always visible, does nothing for now */}
           <div className="flex justify-center mt-10">
-            <Button 
-              onClick={() => {}} 
-              className="bg-gradient-to-r from-otaku-blue to-otaku-purple hover:from-otaku-purple hover:to-otaku-blue text-white font-cyber px-10"
+            <button
+              className="btn-outline-neon px-8 py-3 inline-flex items-center"
+              style={{ borderRadius: '2rem', fontFamily: 'var(--font-cyber, Orbitron, monospace)', fontSize: '1.2rem' }}
+              onClick={() => {
+                if (window && window['toast']) {
+                  window['toast']('More cards coming soon', {
+                    duration: 3500,
+                    style: {
+                      background: 'linear-gradient(90deg, #3a2257 0%, #8a4fff 100%)',
+                      color: '#fff',
+                    },
+                    className: 'neon-text',
+                    icon: false,
+                  });
+                }
+              }}
             >
-              Load More
-            </Button>
+              Load More <ChevronDown className="ml-2 h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>
