@@ -1,8 +1,8 @@
-# OtakuVerse
-
-OtakuVerse is a full-stack web application and blockchain project designed to connect anime fans and creators. It integrates a modern web frontend, a robust Node.js backend, and a custom Solana smart contract, enabling unique on-chain features for its community.
-Live Link - https://otaku-verse-coral.vercel.app/
+# OtakuVerse 
 ---
+OtakuVerse is a full-stack web application and blockchain project designed to connect anime fans and creators. It integrates a modern web frontend, a robust Node.js backend, and a custom Solana smart contract, enabling unique on-chain features for its community.
+
+Live Link - https://otaku-verse-coral.vercel.app/
 
 ##  What is OtakuVerse?
 
