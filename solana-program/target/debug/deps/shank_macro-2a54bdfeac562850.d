@@ -1,0 +1,9 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\shank_macro-2a54bdfeac562850.dll: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\account.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\builder.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\context.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\instruction.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\shank_macro-2a54bdfeac562850.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\account.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\builder.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\context.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\instruction.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\account.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\builder.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\context.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\shank_macro-0.3.0\src\instruction.rs:

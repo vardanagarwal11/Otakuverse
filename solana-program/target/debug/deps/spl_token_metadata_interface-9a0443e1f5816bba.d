@@ -1,0 +1,8 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libspl_token_metadata_interface-9a0443e1f5816bba.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\instruction.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\state.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\spl_token_metadata_interface-9a0443e1f5816bba.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\instruction.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\state.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\error.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\instruction.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-metadata-interface-0.2.0\src\state.rs:

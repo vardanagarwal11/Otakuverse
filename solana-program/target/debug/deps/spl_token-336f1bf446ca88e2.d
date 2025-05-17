@@ -1,0 +1,10 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libspl_token-336f1bf446ca88e2.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\instruction.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\native_mint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\processor.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\state.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\spl_token-336f1bf446ca88e2.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\instruction.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\native_mint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\processor.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\state.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\error.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\instruction.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\native_mint.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\processor.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\spl-token-3.5.0\src\state.rs:

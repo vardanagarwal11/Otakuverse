@@ -1,0 +1,10 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libanchor_spl-3726bd1c89e4b357.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\associated_token.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\mint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_2022.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_interface.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\anchor_spl-3726bd1c89e4b357.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\associated_token.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\mint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_2022.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_interface.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\associated_token.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\mint.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_2022.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anchor-spl-0.28.0\src\token_interface.rs:

@@ -1,0 +1,7 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libthiserror-caca731bb689474b.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\aserror.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\display.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\thiserror-caca731bb689474b.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\aserror.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\display.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src/lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\aserror.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thiserror-1.0.69\src\display.rs:

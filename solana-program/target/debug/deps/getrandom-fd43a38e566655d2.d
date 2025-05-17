@@ -1,0 +1,10 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libgetrandom-fd43a38e566655d2.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\util.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\custom.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error_impls.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\windows.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\getrandom-fd43a38e566655d2.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\util.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\custom.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error_impls.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\windows.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src/lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\util.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\custom.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\error_impls.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\getrandom-0.2.16\src\windows.rs:

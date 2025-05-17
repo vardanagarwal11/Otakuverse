@@ -1,0 +1,11 @@
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\libborsh-9ff9bed1f48eb200.rmeta: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\mod.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\hint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema_helpers.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\mod.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\helpers.rs
+
+C:\Users\varda\Documents\OtakuVerse-main\OtakuVerse-main\solana-program\target\debug\deps\borsh-9ff9bed1f48eb200.d: C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src/lib.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\mod.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\hint.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema_helpers.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\mod.rs C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\helpers.rs
+
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src/lib.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\mod.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\de\hint.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\schema_helpers.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\mod.rs:
+C:\Users\varda\.cargo\registry\src\index.crates.io-6f17d22bba15001f\borsh-0.10.4\src\ser\helpers.rs:
