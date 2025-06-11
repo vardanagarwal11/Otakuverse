@@ -2,6 +2,9 @@
 seeds = false
 skip-lint = false
 
+[metadata]
+anchor_version = "0.31.1"
+
 [programs.localnet]
 otakuverse_program = "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
 
@@ -9,14 +12,14 @@ otakuverse_program = "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
 otakuverse_program = "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
 
 [programs.testnet]
-otakuverse_program = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
+otakuverse_program = "7VCw2yJjyEY2d68i7QTMSgY6BjSLMdEYPvumorQ5AF99"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "testnet"
-wallet = "../otakuverse-deployer.json"
+wallet = "../otakuverse-deployer.json"  # This wallet belongs to Vardan Agarwal
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

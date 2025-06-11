@@ -15,7 +15,7 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
-const endpoint = clusterApiUrl("devnet");
+const endpoint = clusterApiUrl("testnet");
 const wallets = [new PhantomWalletAdapter(), new SolflareWalletAdapter()];
 
 import { ClerkProvider } from "@clerk/clerk-react";

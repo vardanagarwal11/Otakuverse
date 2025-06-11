@@ -2,23 +2,21 @@ const { Connection, PublicKey, Keypair } = require('@solana/web3.js');
 const fs = require('fs');
 const path = require('path');
 
-// Connect to the Solana devnet
-const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
+// Connect to the Solana testnet
+const connection = new Connection('https://api.testnet.solana.com', 'confirmed');
 
-// Load the deployer keypair
-const deployerKeypairPath = path.resolve(__dirname, '../otakuverse-deployer.json');
-const deployerKeypairData = JSON.parse(fs.readFileSync(deployerKeypairPath, 'utf8'));
-const deployerKeypair = Keypair.fromSecretKey(Buffer.from(deployerKeypairData));
+// Use the provided deployer public key
+const deployerPublicKey = new PublicKey('2BbjdS22iuHEwyNdKVEMm9wCvkqofDLeLagMY6F64Wxg');
 
 // Program ID
-const programId = new PublicKey('6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1');
+const programId = new PublicKey('6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE');
 
 async function main() {
   try {
     // Check the balance of the deployer
-    const balance = await connection.getBalance(deployerKeypair.publicKey);
+    const balance = await connection.getBalance(deployerPublicKey);
     console.log(`Deployer balance: ${balance / 1000000000} SOL`);
-    console.log(`Deployer public key: ${deployerKeypair.publicKey.toString()}`);
+    console.log(`Deployer public key: ${deployerPublicKey.toString()}`);
 
     // Check if the program exists
     try {

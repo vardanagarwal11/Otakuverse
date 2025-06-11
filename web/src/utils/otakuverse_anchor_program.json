@@ -1,0 +1,1021 @@
+{
+  "version": "0.1.0",
+  "name": "otakuverse_program",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [],
+      "args": []
+    },
+    {
+      "name": "stakeNft",
+      "accounts": [
+        {
+          "name": "staker",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stakingAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "nftAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "nftMint",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "unstakeNft",
+      "accounts": [
+        {
+          "name": "staker",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stakingAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "nftAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "nftMint",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "createProposal",
+      "accounts": [
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "proposalAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "votingPowerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "voteOnProposal",
+      "accounts": [
+        {
+          "name": "voter",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "proposalAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "voteAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "proposalId",
+          "type": "u64"
+        },
+        {
+          "name": "support",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "finalizeProposal",
+      "accounts": [
+        {
+          "name": "finalizer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "proposalAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "votingPowerAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "proposalId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initiateTrade",
+      "accounts": [
+        {
+          "name": "initiator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "counterparty",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tradeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tradeId",
+          "type": "u64"
+        },
+        {
+          "name": "initiatorNft",
+          "type": "publicKey"
+        },
+        {
+          "name": "counterpartyNft",
+          "type": "publicKey"
+        },
+        {
+          "name": "expirationTime",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "acceptTrade",
+      "accounts": [
+        {
+          "name": "counterparty",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tradeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tradeId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "cancelTrade",
+      "accounts": [
+        {
+          "name": "initiator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tradeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tradeId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "createEvent",
+      "accounts": [
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "communityAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "membershipAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "eventId",
+          "type": "u64"
+        },
+        {
+          "name": "communityId",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "timestamp",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "rsvpEvent",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rsvpAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "membershipAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "eventId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "cancelEvent",
+      "accounts": [
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "eventId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "verifyAccess",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "nftAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accessAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "nftMint",
+          "type": "publicKey"
+        },
+        {
+          "name": "expirationTime",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "revokeAccess",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "nftAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accessAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "nftMint",
+          "type": "publicKey"
+        },
+        {
+          "name": "userToRevoke",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "mintBadge",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "badgeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "badgeId",
+          "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "rewardUser",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "user",
+          "type": "publicKey"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "StakingAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "staker",
+            "type": "publicKey"
+          },
+          {
+            "name": "nftMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakedAt",
+            "type": "i64"
+          },
+          {
+            "name": "rewardAccrued",
+            "type": "u64"
+          },
+          {
+            "name": "isActive",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Listing",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "seller",
+            "type": "publicKey"
+          },
+          {
+            "name": "nftMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "price",
+            "type": "u64"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VotingPower",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "lastUpdated",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proposal",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "forVotes",
+            "type": "u64"
+          },
+          {
+            "name": "againstVotes",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vote",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposalId",
+            "type": "u64"
+          },
+          {
+            "name": "voter",
+            "type": "publicKey"
+          },
+          {
+            "name": "support",
+            "type": "bool"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Trade",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "initiator",
+            "type": "publicKey"
+          },
+          {
+            "name": "counterparty",
+            "type": "publicKey"
+          },
+          {
+            "name": "initiatorNft",
+            "type": "publicKey"
+          },
+          {
+            "name": "counterpartyNft",
+            "type": "publicKey"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "expirationTime",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Event",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "communityId",
+            "type": "string"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "maxParticipants",
+            "type": "u32"
+          },
+          {
+            "name": "currentParticipants",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RSVP",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "eventId",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Membership",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "communityId",
+            "type": "string"
+          },
+          {
+            "name": "isActive",
+            "type": "bool"
+          },
+          {
+            "name": "canCreateEvents",
+            "type": "bool"
+          },
+          {
+            "name": "joinedAt",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Access",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "nftMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "grantedAt",
+            "type": "i64"
+          },
+          {
+            "name": "expirationTime",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Badge",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "mintedAt",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Reward",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "lastRewardedAt",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "NFTRarity",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Common",
+            "fields": []
+          },
+          {
+            "name": "Uncommon",
+            "fields": []
+          },
+          {
+            "name": "Rare",
+            "fields": []
+          },
+          {
+            "name": "Epic",
+            "fields": []
+          },
+          {
+            "name": "Legendary",
+            "fields": []
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "You are not authorized to perform this action"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidNFTMetadata",
+      "msg": "Invalid NFT metadata"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidTimestamp",
+      "msg": "Invalid timestamp"
+    },
+    {
+      "code": 6003,
+      "name": "EventNotFound",
+      "msg": "Event not found"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidEventData",
+      "msg": "Invalid event data"
+    },
+    {
+      "code": 6005,
+      "name": "InsufficientVotingPower",
+      "msg": "Insufficient voting power"
+    },
+    {
+      "code": 6006,
+      "name": "ProposalNotFound",
+      "msg": "Proposal not found"
+    },
+    {
+      "code": 6007,
+      "name": "ProposalAlreadyFinalized",
+      "msg": "Proposal is already finalized"
+    },
+    {
+      "code": 6008,
+      "name": "VotingPeriodEnded",
+      "msg": "Voting period has ended"
+    },
+    {
+      "code": 6009,
+      "name": "AlreadyVoted",
+      "msg": "You have already voted on this proposal"
+    },
+    {
+      "code": 6010,
+      "name": "TradeNotFound",
+      "msg": "Trade not found"
+    },
+    {
+      "code": 6011,
+      "name": "TradeExpired",
+      "msg": "Trade has expired"
+    },
+    {
+      "code": 6012,
+      "name": "TradeNotActive",
+      "msg": "Trade is not active"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidTradeParticipant",
+      "msg": "Invalid trade participant"
+    },
+    {
+      "code": 6014,
+      "name": "EventFull",
+      "msg": "Event is full"
+    },
+    {
+      "code": 6015,
+      "name": "EventNotActive",
+      "msg": "Event is not active"
+    },
+    {
+      "code": 6016,
+      "name": "AlreadyRSVPd",
+      "msg": "You have already RSVP'd to this event"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidCommunityMember",
+      "msg": "You are not a valid community member"
+    },
+    {
+      "code": 6018,
+      "name": "AccessExpired",
+      "msg": "Access has expired"
+    },
+    {
+      "code": 6019,
+      "name": "AccessNotGranted",
+      "msg": "Access has not been granted"
+    },
+    {
+      "code": 6020,
+      "name": "NFTAlreadyStaked",
+      "msg": "NFT is already staked"
+    },
+    {
+      "code": 6021,
+      "name": "NFTNotStaked",
+      "msg": "NFT is not staked"
+    },
+    {
+      "code": 6022,
+      "name": "InsufficientStakingPeriod",
+      "msg": "NFT has not been staked for the minimum required period"
+    },
+    {
+      "code": 6023,
+      "name": "InvalidBadgeData",
+      "msg": "Invalid badge data"
+    },
+    {
+      "code": 6024,
+      "name": "BadgeNotFound",
+      "msg": "Badge not found"
+    },
+    {
+      "code": 6025,
+      "name": "InvalidRewardAmount",
+      "msg": "Invalid reward amount"
+    }
+  ],
+  "metadata": {
+    "address": "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
+  }
+}

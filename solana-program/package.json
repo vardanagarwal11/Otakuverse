@@ -1,0 +1,20 @@
+{
+  "name": "otakuverse-solana-program-tests",
+  "version": "1.0.0",
+  "description": "Test suite for OtakuVerse Solana program using Anchor and Mocha.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.29.0",
+    "@solana/web3.js": "^1.73.2",
+    "@solana/spl-token": "^0.3.8",
+    "chai": "^4.3.7",
+    "ts-mocha": "^10.0.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  }
+}

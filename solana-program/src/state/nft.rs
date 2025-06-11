@@ -1,7 +1,8 @@
-use anchor_lang::prelude::*;
+use borsh::{BorshSerialize, BorshDeserialize};
+use solana_program::pubkey::Pubkey;
 
 /// NFT rarity enum
-#[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug, PartialEq)]
+#[derive(BorshSerialize, BorshDeserialize, Clone, Debug, PartialEq)]
 pub enum NFTRarity {
     Common,
     Rare,
@@ -31,33 +32,23 @@ impl NFTRarity {
 }
 
 /// NFT attribute structure
-#[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug, PartialEq)]
+#[derive(BorshSerialize, BorshDeserialize, Clone, Debug, PartialEq)]
 pub struct NFTAttribute {
-    /// The trait type
     pub trait_type: String,
-    /// The value of the trait
     pub value: String,
 }
 
 /// NFT data structure
-#[account]
-#[derive(Debug)]
+#[derive(BorshSerialize, BorshDeserialize, Debug, Clone, PartialEq)]
+#[derive(BorshSerialize, BorshDeserialize)]
 pub struct NFTData {
-    /// The mint address of the NFT
     pub mint: Pubkey,
-    /// The owner of the NFT
     pub owner: Pubkey,
-    /// The name of the NFT
     pub name: String,
-    /// The symbol of the NFT
     pub symbol: String,
-    /// The URI pointing to the NFT metadata
     pub uri: String,
-    /// The anime title associated with the NFT
     pub anime_title: String,
-    /// The rarity of the NFT
     pub rarity: NFTRarity,
-    /// Whether the NFT is for sale
     pub is_for_sale: bool,
     /// The price of the NFT in lamports (if for sale)
     pub price: u64,
@@ -126,5 +117,60 @@ impl NFTData {
     /// Calculate the royalty amount for a given sale price
     pub fn calculate_royalty(&self, sale_price: u64) -> u64 {
         (sale_price as u128 * self.royalty_basis_points as u128 / 10000) as u64
+    }
+}
+impl NFTData {
+    pub fn new() -> Self {
+        Self {
+            mint: Pubkey::default(),
+            owner: Pubkey::default(),
+            name: String::new(),
+            symbol: String::new(),
+            uri: String::new(),
+            anime_title: String::new(),
+            rarity: NFTRarity::Common,
+            is_for_sale: false,
+            price: 0,
+            created_at: 0,
+            creator: Pubkey::default(),
+            description: String::new(),
+            collection_id: None,
+            attributes: vec![],
+            royalty_basis_points: 0,
+            is_verified: false,
+        }
+    }
+    pub fn new_with_details(
+        mint: Pubkey,
+        owner: Pubkey,
+        name: String,
+        symbol: String,
+        uri: String,
+        anime_title: String,
+        rarity: NFTRarity,
+        creator: Pubkey,
+        description: String,
+        collection_id: Option<Pubkey>,
+        attributes: Vec<NFTAttribute>,
+        royalty_basis_points: u16,
+    ) -> Self {
+        Self {
+            mint,
+            owner,
+            name,
+            symbol,
+            uri,
+            anime_title,
+            rarity,
+            is_for_sale: false,
+            price: 0,
+            created_at: 0,
+            creator,
+            description,
+            collection_id,
+            attributes,
+            royalty_basis_points,
+            is_verified: false,
+        }
     }
 }

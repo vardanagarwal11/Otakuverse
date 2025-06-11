@@ -1,11 +1,16 @@
-use anchor_lang::prelude::*;
+use borsh::{BorshSerialize, BorshDeserialize};
+use solana_program::pubkey::Pubkey;
 use crate::state::nft::{NFTAttribute, NFTRarity};
+use solana_program::instruction::{Instruction, AccountMeta};
+use solana_program::system_program;
+use solana_program::sysvar::rent;
+use spl_token;
+use mpl_token_metadata;
 
 /// Instructions supported by the OtakuVerse program
 #[derive(BorshSerialize, BorshDeserialize, Clone, Debug, PartialEq)]
 pub enum OtakuVerseInstruction {
     /// Mint a new NFT as a reward for watching anime
-    ///
     /// Accounts expected:
     /// 0. `[signer]` The authority account (payer)
     /// 1. `[writable]` The NFT mint account
@@ -18,20 +23,14 @@ pub enum OtakuVerseInstruction {
     /// 8. `[]` The token metadata program
     /// 9. `[]` The rent sysvar
     MintNFTReward {
-        /// Name of the NFT
         name: String,
-        /// Symbol of the NFT
         symbol: String,
-        /// URI pointing to the NFT metadata
         uri: String,
-        /// Anime title associated with the NFT
         anime_title: String,
-        /// Rarity of the NFT (common, rare, epic, legendary)
         rarity: String,
     },
 
     /// Mint a new NFT with enhanced metadata
-    ///
     /// Accounts expected:
     /// 0. `[signer]` The authority account (payer)
     /// 1. `[writable]` The NFT mint account
@@ -44,23 +43,14 @@ pub enum OtakuVerseInstruction {
     /// 8. `[]` The token metadata program
     /// 9. `[]` The rent sysvar
     MintEnhancedNFT {
-        /// Name of the NFT
         name: String,
-        /// Symbol of the NFT
         symbol: String,
-        /// URI pointing to the NFT metadata
         uri: String,
-        /// Anime title associated with the NFT
         anime_title: String,
-        /// Rarity of the NFT
         rarity: NFTRarity,
-        /// Description of the NFT
         description: String,
-        /// Collection ID this NFT belongs to (if any)
         collection_id: Option<Pubkey>,
-        /// Attributes of the NFT
         attributes: Vec<NFTAttribute>,
-        /// Royalty percentage for secondary sales (in basis points)
         royalty_basis_points: u16,
     },
 

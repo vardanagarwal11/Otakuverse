@@ -1,20 +1,27 @@
-use anchor_lang::prelude::*;
+#![cfg(not(feature = "nspl_tokentrypoint"))]
 
-declare_id!("6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1");
-
-#[program]
-pub mod otakuverse_program {
-    use super::*;
-
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("OtakuVerse program initialized!");
-        Ok(())
-    }
+pub mod error;
+pub mod instruction;
+pub mod processor;
+pub mod state {
+    pub mod nft;
+    pub mod community;
+    pub mod r#mod;
 }
 
-#[derive(Accounts)]
-pub struct Initialize<'info> {
-    #[account(mut)]
-    pub user: Signer<'info>,
-    pub system_program: Program<'info, System>,
+use solana_program::{
+    account_info::AccountInfo,
+    entrypoint,
+    entrypoint::ProgramResult,
+    pubkey::Pubkey,
+};
+
+entrypoint!(process_instruction);
+
+pub fn process_instruction(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    instruction_data: &[u8],
+) -> ProgramResult {
+    processor::process_instruction(program_id, accounts, instruction_data)
 }

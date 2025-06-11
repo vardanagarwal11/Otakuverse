@@ -1,37 +1,20 @@
-use anchor_lang::prelude::*;
+use borsh::{BorshDeserialize, BorshSerialize};
+use solana_program::program_error::ProgramError;
 
-/// Custom errors for the OtakuVerse program
-#[error_code]
+#[derive(BorshSerialize, BorshDeserialize, Debug, Clone, PartialEq)]
 pub enum OtakuVerseError {
-    /// Invalid instruction data passed
-    #[msg("Invalid instruction data")]
     InvalidInstructionData,
-
-    /// Not enough SOL to purchase NFT
-    #[msg("Insufficient funds for purchase")]
     InsufficientFunds,
-
-    /// User doesn't have permission
-    #[msg("Unauthorized access")]
     Unauthorized,
-
-    /// NFT already minted
-    #[msg("NFT already exists")]
     NFTAlreadyExists,
-
-    /// NFT not found
-    #[msg("NFT not found")]
     NFTNotFound,
-
-    /// Invalid NFT metadata
-    #[msg("Invalid NFT metadata")]
     InvalidNFTMetadata,
-
-    /// Invalid message data
-    #[msg("Invalid message data")]
     InvalidMessageData,
-
-    /// Community not found
-    #[msg("Community not found")]
     CommunityNotFound,
+}
+
+impl From<OtakuVerseError> for ProgramError {
+    fn from(e: OtakuVerseError) -> Self {
+        ProgramError::Custom(e as u32)
+    }
 }

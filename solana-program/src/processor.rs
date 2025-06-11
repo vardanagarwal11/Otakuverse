@@ -5,13 +5,15 @@ use solana_program::{
     msg,
     program::{invoke, invoke_signed},
     program_error::ProgramError,
-    program_pack::Pack,
     pubkey::Pubkey,
     system_instruction,
     sysvar::{clock::Clock, rent::Rent, Sysvar},
 };
 use spl_token::instruction as token_instruction;
 use mpl_token_metadata::instruction as metadata_instruction;
+// Ensure these are imported for clarity
+use spl_token;
+use mpl_token_metadata;
 
 use crate::{
     error::OtakuVerseError,
@@ -136,7 +138,7 @@ fn process_mint_nft_reward(
             nft_mint_info.key,
             mint_rent,
             spl_token::state::Mint::LEN as u64,
-            &spl_token::id(),
+            spl_token::id(),
         ),
         &[authority_info.clone(), nft_mint_info.clone()],
     )?;
@@ -144,7 +146,7 @@ fn process_mint_nft_reward(
     // Initialize mint
     invoke(
         &token_instruction::initialize_mint(
-            &spl_token::id(),
+            spl_token::id(),
             nft_mint_info.key,
             mint_authority_info.key,
             Some(update_authority_info.key),
@@ -177,7 +179,7 @@ fn process_mint_nft_reward(
     // Mint token
     invoke(
         &token_instruction::mint_to(
-            &spl_token::id(),
+            spl_token::id(),
             nft_mint_info.key,
             nft_token_info.key,
             mint_authority_info.key,
@@ -229,7 +231,7 @@ fn process_mint_nft_reward(
     let current_timestamp = clock.unix_timestamp;
 
     // Create NFT data
-    let nft_data = NFTData::new(
+    let nft_data = Box::new(NFTData::new(
         *nft_mint_info.key,
         *authority_info.key,
         name,
@@ -239,7 +241,7 @@ fn process_mint_nft_reward(
         rarity,
         0,
         current_timestamp,
-    );
+    ));
 
     // Store NFT data (in a real implementation, this would be stored on-chain)
     // For simplicity, we're just logging it here
@@ -284,7 +286,7 @@ fn process_purchase_nft(
     // Transfer NFT from seller to buyer
     invoke(
         &token_instruction::transfer(
-            &spl_token::id(),
+            spl_token::id(),
             seller_token_info.key,
             buyer_token_info.key,
             seller_info.key,
@@ -348,7 +350,7 @@ fn process_mint_enhanced_nft(
             nft_mint_info.key,
             mint_rent,
             spl_token::state::Mint::LEN as u64,
-            &spl_token::id(),
+            spl_token::id(),
         ),
         &[authority_info.clone(), nft_mint_info.clone()],
     )?;
@@ -356,7 +358,7 @@ fn process_mint_enhanced_nft(
     // Initialize mint
     invoke(
         &token_instruction::initialize_mint(
-            &spl_token::id(),
+            spl_token::id(),
             nft_mint_info.key,
             mint_authority_info.key,
             Some(update_authority_info.key),
@@ -389,7 +391,7 @@ fn process_mint_enhanced_nft(
     // Mint token
     invoke(
         &token_instruction::mint_to(
-            &spl_token::id(),
+            spl_token::id(),
             nft_mint_info.key,
             nft_token_info.key,
             mint_authority_info.key,
@@ -453,7 +455,7 @@ fn process_mint_enhanced_nft(
     let current_timestamp = clock.unix_timestamp;
 
     // Create NFT data with enhanced metadata
-    let nft_data = NFTData::new_with_details(
+    let nft_data = Box::new(NFTData::new_with_details(
         *nft_mint_info.key,
         *authority_info.key,
         name,
@@ -469,7 +471,7 @@ fn process_mint_enhanced_nft(
         attributes,
         royalty_basis_points,
         false, // Not verified by default
-    );
+    ));
 
     // Store NFT data (in a real implementation, this would be stored on-chain)
     // For simplicity, we're just logging it here
@@ -605,6 +607,7 @@ fn process_cancel_nft_listing(
     // 2. Verify the owner is the actual owner of the NFT
     // 3. Remove the NFT from sale
     // 4. Store the updated NFT data
+    // NOTE: If you encounter stack overflow errors, box large arrays/structs to reduce stack usage.
 
     // For simplicity, we'll just log the cancellation
     msg!("NFT listing cancelled successfully");
@@ -637,7 +640,7 @@ fn process_send_community_message(
     let community_data = CommunityData::unpack_from_slice(&community_info.data.borrow())
         .map_err(|_| OtakuVerseError::CommunityNotFound)?;
 
-    if !community_data.is_initialized || community_data.id != community_id {
+    if community_data.id != community_id {
         return Err(OtakuVerseError::CommunityNotFound.into());
     }
 
@@ -647,7 +650,7 @@ fn process_send_community_message(
 
     // Create message data
     let message_data = MessageData {
-        is_initialized: true,
+        
         community_id,
         sender: *sender_info.key,
         content,

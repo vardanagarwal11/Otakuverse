@@ -7,7 +7,7 @@ edition = "2021"
 [lib]
 crate-type = ["cdylib", "lib"]
 name = "otakuverse_program"
-path = "src/simple_program.rs"
+path = "src/lib.rs"
 
 [features]
 no-entrypoint = []
@@ -17,12 +17,13 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-solana-program = "=1.16.0"
+borsh = "0.10.3"
+spl-token = { version = "3.5.0", features = ["no-entrypoint"] }
+mpl-token-metadata = { version = "1.13.2", features = ["no-entrypoint"] }
+spl-associated-token-account = { version = "1.1.2", features = ["no-entrypoint"] }
+solana-program = "1.16.17"
 
-[dev-dependencies]
-solana-program-test = "=1.16.0"
-solana-sdk = "=1.16.0"
+# All spl-token-2022 and patch/override sections have been removed for stable SPL Token v3 only.
 
 [profile.release]
 overflow-checks = true
-
