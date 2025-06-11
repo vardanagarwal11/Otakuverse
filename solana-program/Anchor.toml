@@ -3,10 +3,10 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-otakuverse_program = "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
+otakuverse_program = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
 
 [programs.devnet]
-otakuverse_program = "6WVQUSeRZPpZDukYxKc1gLjG1hRtUMHCGpvoC7vsEFw1"
+otakuverse_program = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
 
 [programs.testnet]
 otakuverse_program = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
@@ -16,7 +16,17 @@ url = "https://api.apr.dev"
 
 [provider]
 cluster = "testnet"
-wallet = "../otakuverse-deployer.json"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[[test.genesis]]
+address = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
+program = "target/deploy/otakuverse_program.so"
+
+[test.validator]
+url = "https://api.testnet.solana.com"
+
+[[test.validator.clone]]
+address = "6XC7XVUWDQCLPGuJusuVRUnSuWLHFBLw8fDD7srCVAxE"
